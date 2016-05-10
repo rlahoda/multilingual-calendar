@@ -1,0 +1,24 @@
+input {
+  background-color: lighten($base-20l, 20);
+  border-color: $base-20d;
+  border-radius: $border-radius;
+  padding: 15px;
+  border-style: solid;
+}
+
+.tintbox {
+  width: 40px;
+  height: 60px;
+  float: left;
+  margin-top: 60px;
+
+}
+
+.tintbox_main {
+  height: 120px;
+  float: left;
+}
+
+.clearfix {
+  clear: both;
+}

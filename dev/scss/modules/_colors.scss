@@ -1,0 +1,56 @@
+// Begin colors
+
+$base-clr: #2ca8c8;
+$base-20l: (lighten($base-clr, 20%));
+$base-20d: (darken($base-clr, 20%));
+
+
+$accent-clr: #e71414;
+$accent-20l: (lighten($accent-clr, 20%));
+$accent-20d: (darken($accent-clr, 20%));
+
+$gray_40: #666666;
+// $gray_60:
+
+
+// Feedback colors
+
+$success: green;
+$warning: yellow;
+$error: red;
+$informational: blue;
+$alert: red;
+
+
+
+
+
+
+
+
+
+$colors-buttons:
+  "base-clr" $base-clr $base-20l,
+  "base-20l" $base-20l $base-clr,
+  "base-20d" $base-20d $base-clr,
+  "accent-clr" $accent-clr $accent-20l,
+  "accent-20l" $accent-20l $accent-clr,
+  "accent-20d" $accent-20d $accent-clr;
+
+
+  @each $i in $colors-buttons{
+  .#{nth($i, 1)}-bkg {
+    background-color: nth($i, 2);
+    border-color: nth($i, 2);
+  }
+  // .#{nth($i, 1)}-clr {
+  //   color:nth($i, 2);
+  // }
+  // .#{nth($i, 1)}-bdr {
+  //   border-color: nth($i, 2);
+  // }
+  button.#{nth($i, 1)}-bkg:hover {
+    background-color: nth($i, 3);
+    // opacity: 0.5;
+  }
+}

@@ -1,0 +1,55 @@
+// Set this file to output to the css directory through your preprocessor
+
+
+// Compass
+// @import "compass";
+
+// Reset
+@import "partials/reset"; // This code is normalize.css from http://necolas.github.io/normalize.css/
+
+// Base
+@import "partials/base"; // Single-element selectors such as html, body, form, a, a:hover
+
+// Partials
+@import "partials/typography";
+@import "partials/buttons";
+@import "partials/figures";
+@import "partials/grids";
+@import "partials/state"; // Refers to the states for items. "Hidden", "Visible", "Active", "inactive" etc
+// ...
+
+
+
+
+
+
+// Third-party
+// @import "vendor/utility";
+
+
+// Here's the overall structure to this base styles template:
+// scss/
+// |
+// |-- modules/              # Common modules
+// |   |-- _all.scss         # Include to get all modules
+// |      |-- _utility.scss  # Module name
+// |      |-- _colors.scss   # Etc...
+// |   ...
+// |
+// |-- partials/             # Partials
+// |   |-- _base.sass        # imports for all mixins + global project variables
+// |   |-- _buttons.scss     # buttons
+// |   |-- _figures.scss     # figures
+// |   |-- _grids.scss       # grids
+// |   |-- _typography.scss  # typography
+// |   |-- _reset.scss       # reset
+// |   ...
+// |
+// |-- vendor/               # CSS or Sass from other projects
+// |   |-- _colorpicker.scss
+// |   |-- _jquery.ui.core.scss
+// |   ...
+// |
+// `-- main.scss            # primary Sass file
+
+// Adapted from http://thesassway.com/beginner/how-to-structure-a-sass-project
