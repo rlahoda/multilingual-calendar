@@ -72,11 +72,11 @@ gulp.task('watch', ['browser-sync'] ,function() {
   gulp.watch(globs.pages,['pages']);
 });
 
-//Get and render all HAML files recursively and put them into the prod folder
-gulp.task('haml', function() {
-  gulp.src('dev/haml/**/*.haml')
-  .pipe(haml())
-  .pipe(gulp.dest('prod'));
+// Get and render all .haml files recursively
+gulp.task('haml', function () {
+  gulp.src('./dev/haml/**/*.haml')
+    .pipe(haml())
+    .pipe(gulp.dest('./prod'));
 });
 
 //PostCSS process and SASS compilation
