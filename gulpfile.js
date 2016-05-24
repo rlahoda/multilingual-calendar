@@ -66,11 +66,19 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('watch', ['browser-sync'] ,function() {
-  gulp.watch(globs.scripts,['scripts']);
-  gulp.watch(globs.styles,['styles']);
-  gulp.watch(globs.pages,['pages']);
+
+gulp.task('serve', function() {
+  browserSync({
+    server: {
+      baseDir: 'app'
+    }
+  });
+
+  gulp.watch(['*.html', 'styles/**/*.css', 'scripts/**/*.js'], {cwd: 'prod'}, reload);
 });
+
+
+
 
 // Get and render all .haml files recursively
 gulp.task('haml', function () {
@@ -85,15 +93,6 @@ gulp.task('css', function () {
     var autoprefixer = require('autoprefixer');
 
   return gulp.src( ['dev/scss/**/*.scss'] )
-    // PostCSS Tasks before Sass compilation
-    // .pipe(
-    //     postcss([
-    //         stylelint()
-    //         // reporter({ clearMessages: true, throwError: true })
-    //     ],
-    //     { syntax: scss })
-    // )
-    // Sass Compilation
     .pipe( sass({
         errLogToConsole: true
     }) )
@@ -152,11 +151,18 @@ gulp.task('pngSprite', ['svgSprite'], function() {
 
 gulp.task('sprite', ['pngSprite']);
 
-gulp.task('watch', function(){
+
+gulp.task('watch', ['browser-sync'] ,function() {
+  gulp.watch(globs.scripts,['scripts']);
+  gulp.watch(globs.styles,['css']);
+  gulp.watch(globs.pages,['haml']);
 	gulp.watch(paths.sprite.src, ['sprite']).on('change', function(evt) {
 		changeEvent(evt);
 	});
+	gulp.watch('./prod/**/*.*').on('change', browserSync.reload);
 });
+
+
 
 gulp.task('default', ['haml', 'sprite', 'css']);
 
