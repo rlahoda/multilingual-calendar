@@ -31,7 +31,7 @@ var paths = {
 
 var globs = {
   "scripts" : ['dev/scripts/*.js'],
-  "styles"  : ['dev/scss/style.styl'],
+  "styles"  : ['dev/scss/**/*.scss'],
   "pages"  : ['dev/**/*.haml'],
   "images"  : ['dev/assets/**/*'],
 }
