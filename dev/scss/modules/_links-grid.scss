@@ -1,0 +1,16 @@
+// .links-grid {
+//   &:before {
+//         @include sprite(casicon);
+//         content: '';
+//         float: left;
+//         margin-right: 0.5em;
+//   }
+// }
+.links-grid {
+  &:before {
+		@include sprite(twitter);
+		content: '';
+		float: left;
+		margin-right: 0.5em;
+	}
+}

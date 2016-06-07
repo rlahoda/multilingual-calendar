@@ -1,6 +1,46 @@
 $icons: (
-	  sprite: (width: 104px, height: 96px, pngPath: '../img/sprite.png', svgPath: '../img/sprite.svg'),
- 	facebook: (width: 10px, height: 22px, backgroundX: 0px, backgroundY: 0px),
- 	twitter: (width: 32px, height: 22px, backgroundX: -20px, backgroundY: -32px),
- 	twitterHover: (width: 32px, height: 22px, backgroundX: -62px, backgroundY: -64px),
+      sprite: (width: 104px, height: 96px, pngPath: '../assets/img/sprite.png', svgPath: '../assets/img/sprite.svg'),
+    facebook: (width: 10px, height: 22px, backgroundX: 0px, backgroundY: 0px),
+    twitter: (width: 32px, height: 22px, backgroundX: -20px, backgroundY: -32px),
+    twitterHover: (width: 32px, height: 22px, backgroundX: -62px, backgroundY: -64px),
 );
+
+
+
+
+
+// .svg-common {
+// 	background: url("assets/img/sprite.svg") no-repeat;
+// }
+//
+// .svg-facebook {
+// 	@extend .svg-common;
+// 	background-position: 0 0;
+// }
+//
+// .svg-facebook-dims {
+// 	width: 20px;
+// 	height: 32px;
+// }
+//
+// .svg-twitter {
+// 	@extend .svg-common;
+// 	background-position: 32.25806451612903% 50%;
+// }
+//
+// .svg-twitter-dims {
+// 	width: 42px;
+// 	height: 32px;
+// }
+//
+// .svg-twitterHover {
+// 	@extend .svg-common;
+// 	background-position: 100% 100%;
+// }
+//
+// .svg-twitterHover-dims {
+// 	width: 42px;
+// 	height: 32px;
+// }
+//
+// 

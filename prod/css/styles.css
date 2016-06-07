@@ -360,6 +360,14 @@ textarea {
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
 
+.links-grid:before {
+  display: inline-block;
+  background-image: url("../assets/img/sprite.svg");
+  background-size: 8em 7.38462em; }
+
+.lt-ie9 .links-grid:before {
+  background-image: url("../assets/img/sprite.png"); }
+
 .base-clr-bkg {
   background-color: #2ca8c8;
   border-color: #2ca8c8; }
@@ -421,6 +429,18 @@ input {
 
 .clearfix {
   clear: both; }
+
+.links-grid:before {
+  width: 2.53846em;
+  height: 1.76923em;
+  background-position: -1.92308em -2.84615em;
+  content: '';
+  float: left;
+  margin-right: 0.5em; }
+  .lt-ie9 .links-grid:before {
+    width: 32px;
+    height: 22px;
+    background-position: -25px -37px; }
 
 body {
   font-family: sans-serif; }
