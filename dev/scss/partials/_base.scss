@@ -23,5 +23,16 @@ $header-font-weight: $bold;
 $border-radius: 10px;
 $border-style: solid;
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 // This imports all modules inside the modules directory that have been added to the _all partial
 @import "modules/all";

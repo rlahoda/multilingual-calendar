@@ -15,7 +15,7 @@ var paths = {
   templates: {
     src: basePaths.src + 'tpl/'
   },
-  haml: {
+  twig: {
     src: basePaths.src,
     dest: basePaths.dest
   },
@@ -26,14 +26,19 @@ var paths = {
   css: {
     src: basePaths.src + 'scss/',
     dest: basePaths.dest + 'css/'
+  },
+  html: {
+    src: basePaths.src,
+    dest: basePaths.dest
   }
 };
 var globs = {
   "scripts": ['dev/**/*.js'],
   "styles": ['dev/scss/**/*.scss'],
-  "pages": ['dev/**/*.haml'],
+  "pages": ['dev/**/*.twig'],
   "images": ['dev/assets/**/*'],
   "vendor": ['dev/vendor/**/*'],
+  "html": ['dev/**/*.html']
 }
 
 // BroswerSync
@@ -49,7 +54,7 @@ var watchify = require('watchify');
 var uglify = require('gulp-uglify');
 var postcss = require('gulp-postcss');
 var sass = require('gulp-sass');
-var haml = require('gulp-haml');
+var twig = require('gulp-twig');
 var gutil = require('gulp-util');
 var svgSprite = require('gulp-svg-sprite');
 var svg2png = require('gulp-svg2png');
@@ -79,11 +84,13 @@ gulp.task('serve', function() {
 });
 
 
-// Get and render all .haml files recursively
-gulp.task('haml', function() {
-  gulp.src('./dev/haml/**/*.haml')
-    .pipe(haml())
-    .pipe(gulp.dest('./prod'));
+//Twig compile
+gulp.task('twig', function () {
+    'use strict';
+    var twig = require('gulp-twig');
+    return gulp.src('dev/twig/*.twig')
+        .pipe(twig())
+        .pipe(gulp.dest('./prod'));
 });
 
 
@@ -91,11 +98,8 @@ gulp.task('haml', function() {
 gulp.task('css', function() {
   var postcss = require('gulp-postcss');
   var autoprefixer = require('autoprefixer');
-
   return gulp.src(['dev/scss/**/*.scss'])
-    .pipe(sass({
-      errLogToConsole: true
-    }))
+    .pipe(sass())
     // PostCSS tasks after Sass compilation
     .pipe(sourcemaps.init())
     .pipe(postcss([
@@ -120,6 +124,13 @@ gulp.task('scripts', function() {
 gulp.task('vendor', function() {
   gulp.src('./dev/vendor/**/*.*')
     .pipe(gulp.dest('./prod/vendor/'));
+});
+
+
+//Copy html files to appropriate folder
+gulp.task('html', function() {
+  gulp.src('./dev/**/*.html')
+    .pipe(gulp.dest('./prod/'));
 });
 
 
@@ -171,9 +182,10 @@ gulp.task('sprite', ['pngSprite']);
 gulp.task('watch', ['browser-sync'], function() {
   gulp.watch(globs.scripts, ['scripts']);
   gulp.watch(globs.styles, ['css']);
-  gulp.watch(globs.pages, ['haml']);
+  gulp.watch(globs.pages, ['twig']);
   gulp.watch(globs.vendor, ['vendor']);
   gulp.watch(paths.sprite.src, ['sprite']);
+  gulp.watch(globs.html, ['html']);
 
   gulp.watch('./prod/**/*.*').on('change', browserSync.reload);
 });
@@ -181,4 +193,5 @@ gulp.task('watch', ['browser-sync'], function() {
 
 
 gulp.task('default', ['build', 'watch']);
-gulp.task('build', ['haml', 'css', 'vendor', 'sprite', 'scripts']);
+gulp.task('build', ['html', 'css']);
+// gulp.task('build', ['twig', 'css', 'vendor', 'sprite', 'scripts']);

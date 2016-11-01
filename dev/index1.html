@@ -5,175 +5,130 @@
     <meta charset="utf-8">
     <link href="css/styles.css" rel="stylesheet" />
     <title>Clock</title>
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,100i,400,400i,600,600i&subset=latin-ext" rel="stylesheet">
-     <script src="scripts/script.js"></script>
 </head>
 
-<body onload="startTime(), weekNames(), startCal()">
-    <div class="container" onload="startTime()">
+<body>
+    <div class="container">
         <div class="today__container">
             <div class="clockdate__container">
-                <div class="clockdate__title__container">
-                    <h2 id="clock__time__label" class="clockdate__title__text">Current Time</h2>
-                </div>
-                <div id="clock__numbers" class="clockdate__string__container">
-                    <div class="clockdate__digit__container">
-                        <h1 id="clock__num__hour" class="clockdate__digit--num">10</h1>
-                        <h3 id="clock__word__hour" class="clockdate__digit--word">ten</h3>
+                <div id="clock__numbers" class="clock__container">
+                    <div class="clock__num__container">
+                        <h3 id="clock__num__hour" class="clock__num">10</h3>
                     </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="clock__num__spacer1" class="clockdate__digit--num">:</h1>
-                        <h3 id="clock__word__spacer1" class="clockdate__digit--word">:</h3>
+                    <div class="clock__num__container">
+                        <h3 id="clock__num__spacer1" class="clock__num__spacer">:</h3>
                     </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="clock__num__min" class="clockdate__digit--num">10</h1>
-                        <h3 id="clock__word__min" class="clockdate__digit--word">ten</h3>
+                    <div class="clock__num__container">
+                        <h3 id="clock__num__min" class="clock__num">10</h3>
                     </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="clock__num__spacer2" class="clockdate__digit--num">:</h1>
-                        <h3 id="clock__word__spacer2" class="clockdate__digit--word">:</h3>
+                    <div class="clock__num__container">
+                        <h3 id="clock__num__spacer2" class="clock__num__spacer">:</h3>
                     </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="clock__num__sec" class="clockdate__digit--num">25</h1>
-                        <h3 id="clock__word__sec" class="clockdate__digit--word">twenty-five</h3>
+                    <div class="clock__num__container">
+                        <h3 id="clock__num__sec" class="clock__num">25</h3>
                     </div>
                 </div>
-            </div>
-            <div class="clockdate__container">
-                <div class="clockdate__title__container">
-                    <h2 id="date__yesterday__label" class="clockdate__title__text">Yesterday</h2>
-                </div>
-                <div class="clockdate__string__container">
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__month--yesterday" class="clockdate__digit--num">10</h1>
-                        <h3 id="date__word__month--yesterday" class="clockdate__digit--word">October</h3>
+                <div id="clock__words" class="clock__container">
+                    <div class="clock__num__container">
+                        <h3 id="clock__word__hour" class="clock__word">ten</h3>
                     </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__spacer1--yesterday" class="clockdate__digit--num">/</h1>
-                        <h3 id="date__num__spacer1--yesterday" class="clockdate__digit--num"></h3>
+                    <div class="clock__num__container">
+                        <h3 id="clock__word__spacer1" class="clock__word__spacer">:</h3>
                     </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__day--yesterday" class="clockdate__digit--num">9</h1>
-                        <h3 id="date__word__day--yesterday" class="clockdate__digit--word">Ninth</h3>
+                    <div class="clock__num__container">
+                        <h3 id="clock__word__min" class="clock__word">ten</h3>
                     </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__spacer2--yesterday" class="clockdate__digit--num">/</h1>
-                        <h3 id="date__word__spacer1--yesterday" class="clockdate__digit--word">,</h3>
+                    <div class="clock__num__container">
+                        <h3 id="clock__word__spacer2" class="clock__word__spacer">:</h3>
                     </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__year--yesterday" class="clockdate__digit--num">2016</h1>
-                        <h3 id="date__word__year--yesterday" class="clockdate__digit--word">Two thousand sixteen</h3>
+                    <div class="clock__num__container">
+                        <h3 id="clock__word__seconds" class="clock__word">twenty-five</h3>
                     </div>
                 </div>
             </div>
             <div class="clockdate__container">
-                <div class="clockdate__title__container">
-                    <h2 id="date__today__label" class="clockdate__title__text">Today</h2>
+                <div class="date__label">
+                    <h2 id="date__yesterday__label" class="date__label--text">Yesterday</h2>
                 </div>
-                <div class="clockdate__string__container">
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__month--today" class="clockdate__digit--num">10</h1>
-                        <h3 id="date__word__month--today" class="clockdate__digit--word">October</h3>
-                    </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__spacer1--today" class="clockdate__digit--num">/</h1>
-                        <h3 id="date__num__spacer1--today" class="clockdate__digit--num"></h3>
-                    </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__day--today" class="clockdate__digit--num">9</h1>
-                        <h3 id="date__word__day--today" class="clockdate__digit--word">Ninth</h3>
-                    </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__spacer2--today" class="clockdate__digit--num">/</h1>
-                        <h3 id="date__word__spacer1--today" class="clockdate__digit--word">,</h3>
-                    </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__year--today" class="clockdate__digit--num">2016</h1>
-                        <h3 id="date__word__year--today" class="clockdate__digit--word">Two thousand sixteen</h3>
-                    </div>
+                <div class="date__numbers">
+                    <h3 id="date__num__month--yesterday" class="date__num">10</h3>
+                    <h3 id="date__num__spacer1--yesterday" class="date__num__spacer">/</h3>
+                    <h3 id="date__num__day--yesterday" class="date__num">9</h3>
+                    <h3 id="date__num__spacer2--yesterday" class="date__num__spacer">/</h3>
+                    <h3 id="date__num__year--yesterday" class="date__num">2016</h3>
+                </div>
+                <div class="date__words">
+                    <h3 id="date__word__month--yesterday" class="date__word">October</h3>
+                    <h3 id="date__word__day--yesterday" class="date__word">Ninth</h3>
+                    <h3 id="date__word__spacer1--yesterday" class="date__word__spacer">,</h3>
+                    <h3 id="date__word__year--yesterday" class="date__word">Two thousand sixteen</h3>
                 </div>
             </div>
             <div class="clockdate__container">
-                <div class="clockdate__title__container">
-                    <h2 id="date__tomorrow__label" class="clockdate__title__text">Tomorrow</h2>
+                <div class="date__label">
+                    <h2 id="date__today__label" class="date__label--text">Today</h2>
                 </div>
-                <div class="clockdate__string__container">
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__month--tomorrow" class="clockdate__digit--num">10</h1>
-                        <h3 id="date__word__month--tomorrow" class="clockdate__digit--word">October</h3>
-                    </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__spacer1--tomorrow" class="clockdate__digit--num">/</h1>
-                        <h3 id="date__num__spacer1--tomorrow" class="clockdate__digit--num"></h3>
-                    </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__day--tomorrow" class="clockdate__digit--num">9</h1>
-                        <h3 id="date__word__day--tomorrow" class="clockdate__digit--word">Ninth</h3>
-                    </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__spacer2--tomorrow" class="clockdate__digit--num">/</h1>
-                        <h3 id="date__word__spacer1--tomorrow" class="clockdate__digit--word">,</h3>
-                    </div>
-                    <div class="clockdate__digit__container">
-                        <h1 id="date__num__year--tomorrow" class="clockdate__digit--num">2016</h1>
-                        <h3 id="date__word__year--tomorrow" class="clockdate__digit--word">Two thousand sixteen</h3>
-                    </div>
+                <div class="date__numbers">
+                    <h3 id="date__num__month--today" class="date__num">10</h3>
+                    <h3 id="date__num__spacer1--today" class="date__num__spacer">/</h3>
+                    <h3 id="date__num__day--today" class="date__num">10</h3>
+                    <h3 id="date__num__spacer2--today" class="date__num__spacer">/</h3>
+                    <h3 id="date__num__year--today" class="date__num">2016</h3>
+                </div>
+                <div class="date__words">
+                    <h3 id="date__word__month--today" class="date__word">October</h3>
+                    <h3 id="date__word__day--today" class="date__word">Tenth</h3>
+                    <h3 id="date__word__spacer1--today" class="date__word__spacer">,</h3>
+                    <h3 id="date__word__year--today" class="date__word">Two thousand sixteen</h3>
+                </div>
+            </div>
+            <div class="clockdate__container">
+                <div class="date__label">
+                    <h2 id="date__tomorrow__label" class="date__label--text">Tomorrow</h2>
+                </div>
+                <div class="date__numbers">
+                    <h3 id="date__num__month--tomorrow" class="date__num">10</h3>
+                    <h3 id="date__num__spacer1--tomorrow" class="date__num__spacer">/</h3>
+                    <h3 id="date__num__day--tomorrow" class="date__num">11</h3>
+                    <h3 id="date__num__spacer2--tomorrow" class="date__num__spacer">/</h3>
+                    <h3 id="date__num__year--tomorrow" class="date__num">2016</h3>
+                </div>
+                <div class="date__words">
+                    <h3 id="date__word__month--tomorrow" class="date__word">October</h3>
+                    <h3 id="date__word__day--tomorrow" class="date__word">Eleventh</h3>
+                    <h3 id="date__word__spacer1--tomorrow" class="date__word__spacer">,</h3>
+                    <h3 id="date__word__year--tomorrow" class="date__word">Two thousand sixteen</h3>
                 </div>
             </div>
         </div>
-
-
         <div class="cal__container">
             <div class="cal__heading">
-                <h3 id="cal__heading--month" class="cal__heading--text">Month</h3>
-                <h3 class="cal__heading--text">:</h3>
-                <h3 id="cal__heading--monthName" class="cal__heading--text">October</h3>
-            </div>
-            <div class="cal__heading">
-              <form action="" >
-                <input type="radio" name="day" value="sun"  onclick="if(this.checked){startWeekDay('sun')}" checked> Sunday<br>
-                <input type="radio" name="day" value="sun" onclick="if(this.checked){startWeekDay('mon')}"> Monday<br>
-              </form>
-              <form action="" >
-                <input type="radio" name="day" value="sun"  onclick="if(this.checked){languageSwap('english'), weekNames('english')}" checked> English<br>
-                <input type="radio" name="day" value="sun" onclick="if(this.checked){languageSwap('french'), weekNames('french')}"> French<br>
-              </form>
-
+                <h3 class="cal__heading--text">October</h3>
             </div>
             <div class="cal__week">
-                <div id="cal__week__day--sun" class="cal__week__day cal__week__day--first">
-                    <h3 id="cal__week__day--0" class="cal__week__day--text">Sunday</h3>
+                <div class="cal__week__day">
+                    <h3 class="cal__week__day--text">Sunday</h3>
                 </div>
                 <div class="cal__week__day">
-                    <h3 id="cal__week__day--1" class="cal__week__day--text">Monday</h3>
+                    <h3 class="cal__week__day--text">Monday</h3>
                 </div>
                 <div class="cal__week__day">
-                    <h3 id="cal__week__day--2" class="cal__week__day--text">Tuesday</h3>
+                    <h3 class="cal__week__day--text">Tuesday</h3>
                 </div>
                 <div class="cal__week__day">
-                    <h3 id="cal__week__day--3" class="cal__week__day--text">Wednesday</h3>
+                    <h3 class="cal__week__day--text">Wednesday</h3>
                 </div>
                 <div class="cal__week__day">
-                    <h3 id="cal__week__day--4" class="cal__week__day--text">Thursday</h3>
+                    <h3 class="cal__week__day--text">Thursday</h3>
                 </div>
                 <div class="cal__week__day">
-                    <h3 id="cal__week__day--5" class="cal__week__day--text">Friday</h3>
+                    <h3 class="cal__week__day--text">Friday</h3>
                 </div>
                 <div class="cal__week__day">
-                    <h3 id="cal__week__day--6" class="cal__week__day--text">Saturday</h3>
+                    <h3 class="cal__week__day--text">Saturday</h3>
                 </div>
             </div>
-            <div id="cal__days__grid" class="cal__days__grid">
-                <!-- <div class="cal__days__day cal__days__day--weekend">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div> -->
-                <!-- <div class="cal__days__day">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div>
+            <div class="cal__days__grid">
                 <div class="cal__days__day">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
@@ -185,21 +140,6 @@
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
                 <div class="cal__days__day">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div>
-                <div class="cal__days__day">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div>
-                <div class="cal__days__day cal__days__day--weekend cal__days__day--today">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div>
-                <div class="cal__days__day cal__days__day--weekend">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
@@ -229,12 +169,27 @@
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
-                <div class="cal__days__day cal__days__day--weekend">
+                <div class="cal__days__day">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
-                <div class="cal__days__day cal__days__day--weekend">
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
@@ -264,12 +219,27 @@
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
-                <div class="cal__days__day cal__days__day--weekend">
+                <div class="cal__days__day">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
-                <div class="cal__days__day cal__days__day--weekend">
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
@@ -299,12 +269,27 @@
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
-                <div class="cal__days__day cal__days__day--weekend">
+                <div class="cal__days__day">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
-                <div class="cal__days__day cal__days__day--weekend">
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
+                    <h3 class="cal__days__day--num">1</h3>
+                    <h4 class="cal__days__day--text">One</h4>
+                    <h5 class="cal__days__day--ordinal">First</h5>
+                </div>
+                <div class="cal__days__day">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
@@ -334,16 +319,6 @@
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
-                <div class="cal__days__day cal__days__day--weekend">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div>
-                <div class="cal__days__day cal__days__day--weekend">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div>
                 <div class="cal__days__day">
                     <h3 class="cal__days__day--num">1</h3>
                     <h4 class="cal__days__day--text">One</h4>
@@ -364,19 +339,10 @@
                     <h4 class="cal__days__day--text">One</h4>
                     <h5 class="cal__days__day--ordinal">First</h5>
                 </div>
-                <div class="cal__days__day">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div>
-                <div class="cal__days__day cal__days__day--weekend">
-                    <h3 class="cal__days__day--num">1</h3>
-                    <h4 class="cal__days__day--text">One</h4>
-                    <h5 class="cal__days__day--ordinal">First</h5>
-                </div> -->
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

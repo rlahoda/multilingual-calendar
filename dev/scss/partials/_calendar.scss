@@ -1,0 +1,130 @@
+
+/* calendar */
+.cal__container {
+  flex: 1 1 auto;
+  width: 60%;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $light-grey;
+  display: flex;
+  flex-direction: column;
+  // background-color: blue;
+}
+
+.cal__heading {
+  display: flex;
+  justify-content: center;
+}
+
+.cal__heading--text {
+  font-size: 2em;
+  font-weight: 100;
+  margin: 5px;
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.cal__week {
+  display: flex;
+  justify-content: center;
+}
+
+.cal__week__day {
+  margin: 10px;
+  flex: 1 1 auto;
+  width: 13%;
+  display: flex;
+  justify-content: center;
+}
+
+.cal__week__day--text {
+
+}
+
+.cal__days__grid {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.cal__days__spacer {
+  padding: 1em;
+  margin: 10px 1% 0 0;
+  display: flex;
+  flex: 1 1 auto;
+  width: 10%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0);
+  order: 0;
+}
+
+.cal__days__day {
+  @extend .cal__days__spacer
+  background-color: #dff8fd;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c3f3fd;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.15);
+  order: 1;
+}
+
+
+
+.cal__days__spacer--end {
+  @extend .cal__days__spacer
+  order: 2;
+}
+
+.cal__days__day--num {
+  // flex: 1 1 auto;
+  font-size: 3em;
+}
+
+.cal__days__day--text {
+  // flex: 1 1 auto;
+  font-size: 1.2em;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.cal__days__day--ordinal {
+  // flex: 1 1 auto;
+  font-size: 1em;
+}
+
+.cal__days__day--weekend {
+  background-color: #fefde6;
+  border-color: #fefabd;
+}
+
+.cal__days__day--today {
+  background-color: #fddfed;
+  border-color: #febddb;
+}
+
+.cal__week__day--text {
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.cal__week__day {
+  order: 1;
+}
+
+.cal__week__day--first {
+  order: 0;
+}
+
+.cal__week__day--last {
+  order: 2;
+}

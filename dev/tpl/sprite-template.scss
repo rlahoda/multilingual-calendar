@@ -4,10 +4,6 @@ $icons: (
     {{base}}: (width: {{width.inner}}px, height: {{height.inner}}px, backgroundX: {{position.absolute.x}}px, backgroundY: {{position.absolute.y}}px),
 {{/shapes}});
 
-
-
-
-
 // {{#hasMixin}}@mixin {{mixinName}} {
 // 	background: url("{{{sprite}}}") no-repeat;
 // }

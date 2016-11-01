@@ -1,55 +1,257 @@
-// Set this file to output to the css directory through your preprocessor
+@import "partials/reset";
 
+html {
+  box-sizing: border-box;
+}
 
-// Compass
-// @import "compass";
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+$base-clr: #2ca8c8;
+$base-20l: (lighten($base-clr, 20%));
+$base-20d: (darken($base-clr, 20%));
+$accent-clr: #e71414;
+$accent-20l: (lighten($accent-clr, 20%));
+$accent-20d: (darken($accent-clr, 20%));
+$primary-grey: #6f6f6f;
+$light-grey: #c0c0c0;
 
-// Reset
-@import "partials/reset"; // This code is normalize.css from http://necolas.github.io/normalize.css/
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+  color: $primary-grey;
+}
 
-// Base
-@import "partials/base"; // Single-element selectors such as html, body, form, a, a:hover
+h1 {
+  font-size: 4em;
 
-// Partials
-@import "partials/typography";
-@import "partials/buttons";
-@import "partials/figures";
-@import "partials/grids";
-@import "partials/state"; // Refers to the states for items. "Hidden", "Visible", "Active", "inactive" etc
-// ...
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
 
+h2 {
+  font-size: 2em;
 
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
 
+h3 {
+  font-size: 1.5em;
 
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
 
+h4 {
+  font-size: 1em;
 
-// Third-party
-// @import "vendor/utility";
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
 
+/* calendar */
+.cal__container {
+  flex: 1 1 auto;
+  width: 60%;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $light-grey;
+  display: flex;
+  flex-direction: column;
+  // background-color: blue;
+}
 
-// Here's the overall structure to this base styles template:
-// scss/
-// |
-// |-- modules/              # Common modules
-// |   |-- _all.scss         # Include to get all modules
-// |      |-- _utility.scss  # Module name
-// |      |-- _colors.scss   # Etc...
-// |   ...
-// |
-// |-- partials/             # Partials
-// |   |-- _base.sass        # imports for all mixins + global project variables
-// |   |-- _buttons.scss     # buttons
-// |   |-- _figures.scss     # figures
-// |   |-- _grids.scss       # grids
-// |   |-- _typography.scss  # typography
-// |   |-- _reset.scss       # reset
-// |   ...
-// |
-// |-- vendor/               # CSS or Sass from other projects
-// |   |-- _colorpicker.scss
-// |   |-- _jquery.ui.core.scss
-// |   ...
-// |
-// `-- main.scss            # primary Sass file
+.cal__heading {
+  display: flex;
+  justify-content: center;
+}
 
-// Adapted from http://thesassway.com/beginner/how-to-structure-a-sass-project
+// .cal__heading--text {
+//   // font-size: 2em;
+//   // font-weight: 100;
+//   // margin: 5px;
+//
+//   &::first-letter {
+//     text-transform: capitalize;
+//   }
+// }
+
+.cal__week {
+  display: flex;
+  justify-content: center;
+}
+
+.cal__week__day {
+  margin: 10px;
+  flex: 1 1 auto;
+  width: 13%;
+  display: flex;
+  justify-content: center;
+}
+
+.cal__days__grid {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.cal__days__spacer {
+  padding: 1em;
+  margin: 10px 1% 0 0;
+  display: flex;
+  flex: 1 1 auto;
+  width: 12%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0);
+  order: 0;
+}
+
+.cal__days__day {
+  @extend .cal__days__spacer;
+
+  background-color: #dff8fd;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c3f3fd;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.15);
+  order: 1;
+}
+
+.cal__days__spacer--end {
+  @extend .cal__days__spacer;
+
+  order: 2;
+}
+//
+// .cal__days__day--num {
+//   // font-size: 3em;
+// }
+//
+// .cal__days__day--text {
+//   // font-size: 1.2em;
+//
+//   // &::first-letter {
+//   //   text-transform: capitalize;
+//   // }
+// }
+//
+// .cal__days__day--ordinal {
+//   // font-size: 1em;
+// }
+
+.cal__days__day--weekend {
+  background-color: #fefde6;
+  border-color: #fefabd;
+}
+
+.cal__days__day--today {
+  background-color: #fddfed;
+  border-color: #febddb;
+}
+
+// .cal__week__day--text {
+//   &::first-letter {
+//     text-transform: capitalize;
+//   }
+// }
+
+.cal__week__day {
+  order: 1;
+}
+
+.cal__week__day--first {
+  order: 0;
+}
+
+.cal__week__day--last {
+  order: 2;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  flex-wrap: wrap;
+  // background-color: orange;
+}
+
+.today__container {
+  display: flex;
+  flex: 1 1 auto;
+  width: 10%;
+  flex-direction: column; //switch this to row for horizontal layout
+  align-items: center; //this needs to change to flex-start if row
+  margin: 5px;
+  padding: 10px;
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $light-grey;
+  // background-color: pink;
+}
+
+.clockdate__container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+// .clockdate__title__container {
+// }
+
+// .clockdate__title__text {
+//   // font-size: 2em;
+//   // font-weight: 100;
+//
+//   &::first-letter {
+//     text-transform: capitalize;
+//   }
+// }
+
+.clockdate__string__container {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.clockdate__digit__container {
+  flex: 1 1 auto;
+  flex-direction: column;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+// .clockdate__digit--num {
+//   // font-size: 4em;
+//   // font-weight: 100;
+// }
+//
+// .clockdate__digit--word {
+//   // font-size: 1.2em;
+//   // font-weight: 400;
+//   text-align: center;
+//
+//   &::first-letter {
+//     text-transform: capitalize;
+//   }
+// }
