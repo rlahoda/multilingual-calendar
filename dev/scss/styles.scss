@@ -1,5 +1,13 @@
 @import "partials/reset";
 
+@mixin respond-at($media) {
+  @media only screen and (min-width: $media) { @content; }
+}
+
+@mixin respond-ht($media) {
+  @media only screen and (min-height: $media) { @content; }
+}
+
 html {
   box-sizing: border-box;
 }
@@ -18,6 +26,16 @@ $accent-20d: (darken($accent-clr, 20%));
 $primary-grey: #6f6f6f;
 $light-grey: #c0c0c0;
 
+// Width Breakpoints
+$bp-xsmall: 600px;
+$bp-small: 780;
+$bp-med: 1060px;
+$bp-large: 1400px;
+
+// Height Breakpoints
+$bph-small: 740px;
+$bph-med: 825px;
+
 body {
   font-family: 'Josefin Sans', sans-serif;
   font-style: normal;
@@ -27,26 +45,50 @@ body {
 }
 
 h1 {
-  font-size: 4em;
-
-  &::first-letter {
-    text-transform: capitalize;
-  }
-}
-
-h2 {
-  font-size: 2em;
-
-  &::first-letter {
-    text-transform: capitalize;
-  }
-}
-
-h3 {
   font-size: 1.5em;
 
   &::first-letter {
     text-transform: capitalize;
+  }
+
+  @include respond-at($bp-med) {
+    font-size: 2em;
+  }
+
+  @include respond-at($bp-large) {
+    font-size: 4em;
+  }
+}
+
+h2 {
+  font-size: 1.25em;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+
+  @include respond-at($bp-med) {
+    font-size: 1.5em;
+  }
+
+  @include respond-at($bp-large) {
+    font-size: 2em;
+  }
+}
+
+h3 {
+  font-size: 1em;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+
+  @include respond-at($bp-med) {
+    font-size: 1.25em;
+  }
+
+  @include respond-at($bp-large) {
+    font-size: 1.5em;
   }
 }
 
@@ -56,14 +98,38 @@ h4 {
   &::first-letter {
     text-transform: capitalize;
   }
+
+  @include respond-at($bp-med) {
+    font-size: 1em;
+  }
+
+  @include respond-at($bp-large) {
+    font-size: 1em;
+  }
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  flex-wrap: wrap;
+
+  @include respond-at($bp-med) {
+    min-height: 100vh;
+  }
 }
 
 /* calendar */
 .cal__container {
   flex: 1 1 auto;
-  width: 60%;
+  width: 98%;
   margin: 5px;
-  padding: 10px;
+  padding: 1%;
   border-radius: 25px;
   border-style: solid;
   border-width: 1px;
@@ -71,22 +137,15 @@ h4 {
   display: flex;
   flex-direction: column;
   // background-color: blue;
+  @include respond-at($bp-large) {
+    width: 60%;
+  }
 }
 
 .cal__heading {
   display: flex;
   justify-content: center;
 }
-
-// .cal__heading--text {
-//   // font-size: 2em;
-//   // font-weight: 100;
-//   // margin: 5px;
-//
-//   &::first-letter {
-//     text-transform: capitalize;
-//   }
-// }
 
 .cal__week {
   display: flex;
@@ -96,9 +155,28 @@ h4 {
 .cal__week__day {
   margin: 10px;
   flex: 1 1 auto;
-  width: 13%;
+  width: 12%;
   display: flex;
   justify-content: center;
+}
+
+.cal__week__day--text {
+  font-size: 0;
+  width: 0;
+  // background-color: blue;
+
+  &::first-letter {
+    font-size: 20px;
+  }
+
+  @include respond-at($bp-xsmall) {
+    font-size: inherit;
+    width: auto;
+
+    &::first-letter {
+      font-size: inherit;
+    }
+  }
 }
 
 .cal__days__grid {
@@ -137,22 +215,26 @@ h4 {
 
   order: 2;
 }
-//
-// .cal__days__day--num {
-//   // font-size: 3em;
-// }
-//
-// .cal__days__day--text {
-//   // font-size: 1.2em;
-//
-//   // &::first-letter {
-//   //   text-transform: capitalize;
-//   // }
-// }
-//
-// .cal__days__day--ordinal {
-//   // font-size: 1em;
-// }
+
+.cal__days__day--text {
+  visibility: hidden;
+  height: 0;
+
+  @include respond-at($bp-xsmall) {
+    visibility: visible;
+    height: auto;
+  }
+}
+
+.cal__days__day--ordinal {
+  visibility: hidden;
+  height: 0;
+
+  @include respond-at($bp-xsmall) {
+    visibility: visible;
+    height: auto;
+  }
+}
 
 .cal__days__day--weekend {
   background-color: #fefde6;
@@ -163,12 +245,6 @@ h4 {
   background-color: #fddfed;
   border-color: #febddb;
 }
-
-// .cal__week__day--text {
-//   &::first-letter {
-//     text-transform: capitalize;
-//   }
-// }
 
 .cal__week__day {
   order: 1;
@@ -182,21 +258,13 @@ h4 {
   order: 2;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100vh;
-  flex-wrap: wrap;
-  // background-color: orange;
-}
-
 .today__container {
   display: flex;
   flex: 1 1 auto;
-  width: 10%;
-  flex-direction: column; //switch this to row for horizontal layout
-  align-items: center; //this needs to change to flex-start if row
+  flex-wrap: wrap;
+  width: 98%;
+  flex-direction: row; //switch this to row for horizontal layout
+  align-items: flex-start; //this needs to change to flex-start if row
   margin: 5px;
   padding: 10px;
   border-radius: 25px;
@@ -204,27 +272,46 @@ h4 {
   border-width: 1px;
   border-color: $light-grey;
   // background-color: pink;
+  @include respond-at($bp-med) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include respond-at($bp-large) {
+    flex-direction: column;
+    width: 10%;
+    flex-wrap: nowrap;
+  }
 }
 
 .clockdate__container {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  width: 100%;
+  width: 55%;
+  // margin: 5% 1%;
+  margin-bottom: 5px;
+  margin-top: 5px;
   align-items: center;
   justify-content: center;
+  // background-color: pink;
+  @include respond-at($bp-xsmall) {
+    width: 45%;
+  }
+
+  @include respond-at($bp-med) {
+    width: 45%;
+  }
+
+  @include respond-at($bp-large) {
+    width: 100%;
+  }
 }
 
 // .clockdate__title__container {
-// }
-
-// .clockdate__title__text {
-//   // font-size: 2em;
-//   // font-weight: 100;
-//
-//   &::first-letter {
-//     text-transform: capitalize;
-//   }
+//   width: 100%;
+//   flex: 1 1 auto;
+//   // background-color: green;
 // }
 
 .clockdate__string__container {
@@ -240,18 +327,3 @@ h4 {
   justify-content: left;
   align-items: center;
 }
-
-// .clockdate__digit--num {
-//   // font-size: 4em;
-//   // font-weight: 100;
-// }
-//
-// .clockdate__digit--word {
-//   // font-size: 1.2em;
-//   // font-weight: 400;
-//   text-align: center;
-//
-//   &::first-letter {
-//     text-transform: capitalize;
-//   }
-// }
