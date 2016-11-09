@@ -59,6 +59,7 @@ function monthDays(month, year) {
 function masterDate() {
     var today = new Date();
     // var today = new Date("January 14, 2017");
+    // var today = new Date("April 14, 2017");
     var year = today.getYear();
     if (year < 1000)
         year += 1900;
@@ -83,7 +84,7 @@ function masterDate() {
     }
 
     var monthLength = monthDays(month1, year);
-    // console.log(monthLength);
+    // console.log(firstDayNumber);
 
     var daysLeft = 42 - (monthLength + firstDayNumber);
 
@@ -93,14 +94,32 @@ function masterDate() {
 
 function startWeekDay(day) {
     startWeekDaySwap(day);
-
+    var overallDate = masterDate();
+    var today = overallDate.today;
+console.log(overallDate.firstDayNumber);
     if (day !== mon) {
         if (day === 'mon') {
+          if (overallDate.firstDayNumber === 0) {
+            for (var i = 0; i < 6; i++) {
+              createSpacer(i);
+              }
+          } else {
             var parent = document.getElementById('cal__days__grid');
             var child = document.getElementById("cal__days__spacer0");
             parent.removeChild(child);
+          }
+
         } else if (day === 'sun') {
+          if (overallDate.firstDayNumber === 6) {
+            for (var i = 0; i < 6; i++) {
+              var parent = document.getElementById('cal__days__grid');
+              var child = document.getElementById("cal__days__spacer" + i);
+              parent.removeChild(child);
+              }
+          } else {
             createSpacer(0);
+          }
+
         }
         mon = day;
     }
