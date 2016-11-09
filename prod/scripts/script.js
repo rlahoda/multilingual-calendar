@@ -30,66 +30,6 @@ var runFirstTime = true;
 
 var mon = 'sun';
 
-function startWeekDay(day) {
-  startWeekDaySwap(day);
-  // console.log(mon + '1');
-
-  // runFirstTime = true;
-  // startCal();
-if (day !== mon) {
-  if (day === 'mon') {
-    var parent = document.getElementById('cal__days__grid');
-    var child = document.getElementById("cal__days__spacer0");
-    parent.removeChild(child);
-  } else if (day === 'sun') {
-    createSpacer(0);
-  }
-  mon = day;
-}
-
-  // var x = document.getElementsByClassName('cal__days__spacer');
-  // x.remove();
-  // console.log(day);
-  // console.log(mon + '2');
-}
-
-function languageSwap(language) {
-  if (language != languageGlobal) {
-    languageGlobal = language;
-  }
-
-  startTime();
-  weekNames();
-  startCal();
-}
-
-function startWeekDaySwap(day) {
-// console.log(day + " as is");
-  if (day === "mon") {
-    // console.log(day + "if mon");
-    document.getElementById('cal__week__day--sun').classList.add("cal__week__day--last");
-    document.getElementById('cal__week__day--sun').classList.remove("cal__week__day--first");
-  } else {
-    // console.log(day + "if sun");
-    document.getElementById('cal__week__day--sun').classList.add("cal__week__day--first");
-    document.getElementById('cal__week__day--sun').classList.remove("cal__week__day--last");
-  };
-}
-
-// function startWeekDaySunday () {
-//   document.getElementById('cal__week__day--sun').classList.remove("cal__week__day--last");
-// }
-
-// function startWeekDaySwap() {
-//   if (document.getElementById('cal__week__day--sun').className.match(/(?:^|\s)cal__week__day--first(?!\S)/)) {
-//     document.getElementById('cal__week__day--sun').className = document.getElementById('cal__week__day--sun').className.replace(/(?:^|\s)cal__week__day--first(?!\S)/g, ' cal__week__day--last');
-//
-//   } else {
-//     document.getElementById('cal__week__day--sun').className = document.getElementById('cal__week__day--sun').className.replace(/(?:^|\s)cal__week__day--last(?!\S)/g, ' cal__week__day--first');
-//   };
-// };
-
-
 function leapYear(year) {
     if (year % 4 == 0) // basic rule
         return true // is leap year
@@ -98,7 +38,7 @@ function leapYear(year) {
 }
 
 function monthDays(month, year) {
-  var ar = new Array(12)
+    var ar = new Array(12)
     ar[0] = 31 // January
     ar[1] = (leapYear(year)) ? 29 : 28 // February
     ar[2] = 31 // March
@@ -112,18 +52,89 @@ function monthDays(month, year) {
     ar[10] = 30 // November
     ar[11] = 31 // December
 
-  // return number of days in the specified month (parameter)
-  return ar[month]
+    // return number of days in the specified month (parameter)
+    return ar[month]
+}
+
+function masterDate() {
+    var today = new Date();
+    // var today = new Date("January 14, 2017");
+    var year = today.getYear();
+    if (year < 1000)
+        year += 1900;
+    var day = today.getDay() + 2;
+
+    var month = today.getMonth() + 1;
+    if (month < 10)
+        month = "0" + month;
+    var month1 = today.getMonth();
+    var day1 = today.getDate();
+    // console.log(day1);
+    var firstDay = new Date(year, month1, 1);
+    var firstDayNumber = firstDay.getDay();
+    console.log(mon + '3');
+    if (mon === 'mon') {
+        if (firstDayNumber === 0) {
+            firstDayNumber = firstDayNumber + 6;
+        } else {
+            firstDayNumber = firstDayNumber - 1;
+        }
+
+    }
+
+    var monthLength = monthDays(month1, year);
+    // console.log(monthLength);
+
+    var daysLeft = 42 - (monthLength + firstDayNumber);
+
+    return {today : today, year : year, day : day, month : month, month1 : month1, day1 : day1, firstDay : firstDay, firstDayNumber : firstDayNumber}
+
+}
+
+function startWeekDay(day) {
+    startWeekDaySwap(day);
+
+    if (day !== mon) {
+        if (day === 'mon') {
+            var parent = document.getElementById('cal__days__grid');
+            var child = document.getElementById("cal__days__spacer0");
+            parent.removeChild(child);
+        } else if (day === 'sun') {
+            createSpacer(0);
+        }
+        mon = day;
+    }
+}
+
+function languageSwap(language) {
+    if (language != languageGlobal) {
+        languageGlobal = language;
+    }
+
+    startTime();
+    weekNames();
+    startCal();
+}
+
+function startWeekDaySwap(day) {
+    if (day === "mon") {
+        document.getElementById('cal__week__day--sun').classList.add("cal__week__day--last");
+        document.getElementById('cal__week__day--sun').classList.remove("cal__week__day--first");
+    } else {
+        document.getElementById('cal__week__day--sun').classList.add("cal__week__day--first");
+        document.getElementById('cal__week__day--sun').classList.remove("cal__week__day--last");
+    };
 }
 
 function startTime() {
-    var today = new Date();
+    var overallDate = masterDate();
+    var today = overallDate.today;
     var todayNum = today.getDate();
     var tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setDate(today.getDate() + 1);
     var tomorrowNum = tomorrow.getDate();
     var yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
+    yesterday.setDate(today.getDate() - 1);
     var yesterdayNum = yesterday.getDate();
     var h = today.getHours();
     var m = today.getMinutes();
@@ -216,144 +227,146 @@ function checkTime(i) {
 }
 
 function weekNames(language) {
-  for (var i = 0; i < 7; i++) {
-    document.getElementById('cal__week__day--'+i).innerHTML = info[languageGlobal].days[i];
-  };
-  //add names to week in language
+    for (var i = 0; i < 7; i++) {
+        document.getElementById('cal__week__day--' + i).innerHTML = info[languageGlobal].days[i];
+    };
+    //add names to week in language
 }
 
 
 // create calendar day
 function createDay(dayNumber, dayClass) {
-  var h2 = document.createElement("h2");
-  h2.className = "cal__days__day--num";
-  h2.id = "h2__" + dayNumber;
-  var h2Text = document.createTextNode(dayNumber);
-  h2.appendChild(h2Text);
+    var h2 = document.createElement("h2");
+    h2.className = "cal__days__day--num";
+    h2.id = "h2__" + dayNumber;
+    var h2Text = document.createTextNode(dayNumber);
+    h2.appendChild(h2Text);
 
-  var h3 = document.createElement("h3");
-  h3.className = "cal__days__day--text";
-  h3.id = "h3__" + dayNumber;
-  var h3Text = document.createTextNode(info[languageGlobal].numbers[dayNumber]);
-  h3.appendChild(h3Text);
+    var h3 = document.createElement("h3");
+    h3.className = "cal__days__day--text";
+    h3.id = "h3__" + dayNumber;
+    var h3Text = document.createTextNode(info[languageGlobal].numbers[dayNumber]);
+    h3.appendChild(h3Text);
 
-  var h4 = document.createElement("h4");
-  h4.className = "cal__days__day--ordinal";
-  h4.id = "h4__" + dayNumber;
-  var h4Text = document.createTextNode(info[languageGlobal].ordinals[dayNumber]);
-  h4.appendChild(h4Text);
+    var h4 = document.createElement("h4");
+    h4.className = "cal__days__day--ordinal";
+    h4.id = "h4__" + dayNumber;
+    var h4Text = document.createTextNode(info[languageGlobal].ordinals[dayNumber]);
+    h4.appendChild(h4Text);
 
-  var dayCard = document.createElement("div")
-  // console.log(dayClass);
-  if (dayClass) {
-    dayCard.className = "cal__days__day " + dayClass;
-  } else {
-    dayCard.className = "cal__days__day ";
-  }
-  dayCard.appendChild(h2);
-  dayCard.appendChild(h3);
-  dayCard.appendChild(h4);
+    var dayCard = document.createElement("div")
+        // console.log(dayClass);
+    if (dayClass) {
+        dayCard.className = "cal__days__day " + dayClass;
+    } else {
+        dayCard.className = "cal__days__day ";
+    }
+    dayCard.appendChild(h2);
+    dayCard.appendChild(h3);
+    dayCard.appendChild(h4);
 
-  // console.log(h3);
-  // console.log(h4);
-  // console.log(h5);
+    // console.log(h3);
+    // console.log(h4);
+    // console.log(h5);
 
-  document.getElementById("cal__days__grid").appendChild(dayCard)
+    document.getElementById("cal__days__grid").appendChild(dayCard)
 }
 
 function createSpacer(num) {
-  var dayCard = document.createElement("div")
-  dayCard.className = "cal__days__spacer";
-  dayCard.id = "cal__days__spacer" + num;
-  document.getElementById("cal__days__grid").appendChild(dayCard)
+    var dayCard = document.createElement("div")
+    dayCard.className = "cal__days__spacer";
+    dayCard.id = "cal__days__spacer" + num;
+    document.getElementById("cal__days__grid").appendChild(dayCard)
 }
 
 function createEndSpacer() {
-  var dayCard = document.createElement("div")
-  dayCard.className = "cal__days__spacer--end";
+    var dayCard = document.createElement("div")
+    dayCard.className = "cal__days__spacer--end";
 
-  document.getElementById("cal__days__grid").appendChild(dayCard)
+    document.getElementById("cal__days__grid").appendChild(dayCard)
 }
 
 
 function startCal() {
-  // var today = new Date();
-  var today = new Date("January 14, 2017");
-  var year = today.getYear();
-  if (year < 1000)
-      year += 1900;
-  var day = today.getDay() + 2;
+    var overallDate = masterDate();
+    var today = overallDate.today;
+    // var today = new Date();
+    // var today = new Date("January 14, 2017");
+    var year = today.getYear();
+    if (year < 1000)
+        year += 1900;
+    var day = today.getDay() + 2;
 
-  var month = today.getMonth() + 1;
-  if (month < 10)
-      month = "0" + month;
-  var month1 = today.getMonth();
-  var day1 = today.getDate();
-// console.log(day1);
-  var firstDay = new Date(year, month1, 1);
-  var firstDayNumber = firstDay.getDay();
-  console.log(mon + '3');
-  if (mon === 'mon') {
-    if (firstDayNumber === 0) {
-      firstDayNumber = firstDayNumber + 6;
+    var month = today.getMonth() + 1;
+    if (month < 10)
+        month = "0" + month;
+    var month1 = today.getMonth();
+    var day1 = today.getDate();
+    // console.log(day1);
+    var firstDay = new Date(year, month1, 1);
+    var firstDayNumber = firstDay.getDay();
+    console.log(mon + '3');
+    if (mon === 'mon') {
+        if (firstDayNumber === 0) {
+            firstDayNumber = firstDayNumber + 6;
+        } else {
+            firstDayNumber = firstDayNumber - 1;
+        }
+
+    }
+
+    var monthLength = monthDays(month1, year);
+    // console.log(monthLength);
+
+    var daysLeft = 42 - (monthLength + firstDayNumber);
+
+    document.getElementById('cal__heading--month').innerHTML = info[languageGlobal].month;
+    document.getElementById('cal__heading--monthName').innerHTML = info[languageGlobal].months[month - 1];
+
+    //create calendar item for total number of days in month and add incrementing numbers in it
+    if (runFirstTime) {
+        for (var i = 1; i <= monthLength; i++) {
+            if (i + firstDayNumber === 1) {
+                if (i === day1) {
+                    createDay(i, 'cal__days__day--today');
+                } else {
+                    createDay(i, 'cal__days__day--weekend');
+                }
+            } else if ((i + firstDayNumber) % 7 === 0) {
+                if (i === day1) {
+                    createDay(i, 'cal__days__day--today');
+                } else {
+                    createDay(i, 'cal__days__day--weekend');
+                }
+            } else if ((i + firstDayNumber) % 7 === 1) {
+                if (i === day1) {
+                    createDay(i, 'cal__days__day--today');
+                } else {
+                    createDay(i, 'cal__days__day--weekend');
+                }
+            } else {
+                if (i === day1) {
+                    createDay(i, 'cal__days__day--today');
+                } else {
+                    createDay(i);
+                }
+            }
+
+        }
+        for (var i = 0; i < firstDayNumber; i++) {
+            createSpacer(i);
+        }
+        for (var i = 0; i < daysLeft; i++) {
+            createEndSpacer();
+        }
+    }
+    if (runFirstTime) {
+
     } else {
-      firstDayNumber = firstDayNumber - 1;
+        for (var i = 1; i <= monthLength; i++) {
+            document.getElementById("h3__" + i).innerHTML = info[languageGlobal].numbers[i];
+            document.getElementById("h4__" + i).innerHTML = info[languageGlobal].ordinals[i];
+        }
     }
-
-  }
-
-  var monthLength = monthDays(month1, year);
-  // console.log(monthLength);
-
-  var daysLeft = 42 -(monthLength + firstDayNumber);
-
-  document.getElementById('cal__heading--month').innerHTML = info[languageGlobal].month;
-  document.getElementById('cal__heading--monthName').innerHTML = info[languageGlobal].months[month - 1];
-
-  //create calendar item for total number of days in month and add incrementing numbers in it
-  if (runFirstTime) {
-    for (var i = 1; i <= monthLength; i++) {
-      if (i + firstDayNumber === 1) {
-        if (i === day1) {
-          createDay(i, 'cal__days__day--today');
-        } else {
-          createDay(i, 'cal__days__day--weekend');
-        }
-      } else if ((i + firstDayNumber) % 7 === 0) {
-        if (i === day1) {
-          createDay(i, 'cal__days__day--today');
-        } else {
-          createDay(i, 'cal__days__day--weekend');
-        }
-      } else if ((i + firstDayNumber) % 7 === 1) {
-        if (i === day1) {
-          createDay(i, 'cal__days__day--today');
-        } else {
-          createDay(i, 'cal__days__day--weekend');
-        }
-      } else {
-        if (i === day1) {
-          createDay(i, 'cal__days__day--today');
-        } else {
-          createDay(i);
-        }
-      }
-
-    }
-    for (var i = 0; i < firstDayNumber; i++) {
-      createSpacer(i);
-  }
-  for (var i = 0; i < daysLeft; i++) {
-    createEndSpacer();
-}
-}
-  if (runFirstTime) {
-
-  } else {
-    for (var i = 1; i <= monthLength; i++) {
-      document.getElementById("h3__"+i).innerHTML = info[languageGlobal].numbers[i];
-      document.getElementById("h4__"+i).innerHTML = info[languageGlobal].ordinals[i];
-    }
-  }
-  runFirstTime = false;
+    runFirstTime = false;
 }
