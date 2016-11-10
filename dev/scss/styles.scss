@@ -327,3 +327,23 @@ h4 {
   justify-content: left;
   align-items: center;
 }
+
+.clockdate__digit__container--first {
+  order: 1;
+}
+
+.clockdate__digit__container--second {
+  order: 2;
+}
+
+.clockdate__digit__container--third {
+  order: 3;
+}
+
+.clockdate__digit__container--fourth {
+  order: 4;
+}
+
+.clockdate__digit__container--fifth {
+  order: 5;
+}

@@ -8,7 +8,7 @@ var info = {
         "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         "years": ["two thousand sixteen", "two thousand seventeen", "two thousand eighteen"],
-        "numbers": ["zero", "one", "two", "three", "four", "five", "six", "Seven", "eight", "new", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine", "fifty", "fifty-one", "fifty-two", "fifty-three", "fifty-four", "fifty-five", "fifty-six", "fifty-seven", "fifty-eight", "fifty-nine", "sixty", "sixty-one", "sixty-two", "sixty-three", "sixty-four", "sixty-five", "sixty-six", "sixty-seven", "sixty-eight", "sixty-nine", "seventy", "seventy-one", "seventy-two", "seventy-three", "seventy-four", "seventy-five", "seventy-six", "seventy-seven", "seventy-eight", "seventy-nine", "eighty", "eighty-one", "eighty-two", "eighty-three", "eighty-four", "eighty-five", "eighty-six", "eighty-seven", "eighty-eight", "eighty-nine", "ninety", "ninety-one", "ninety-two", "ninety-three", "ninety-four", "ninety-five", "ninety-six", "ninety-seven", "ninety-eight", "ninety-nine", "hundred"],
+        "numbers": ["zero", "one", "two", "three", "four", "five", "six", "Seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine", "fifty", "fifty-one", "fifty-two", "fifty-three", "fifty-four", "fifty-five", "fifty-six", "fifty-seven", "fifty-eight", "fifty-nine", "sixty", "sixty-one", "sixty-two", "sixty-three", "sixty-four", "sixty-five", "sixty-six", "sixty-seven", "sixty-eight", "sixty-nine", "seventy", "seventy-one", "seventy-two", "seventy-three", "seventy-four", "seventy-five", "seventy-six", "seventy-seven", "seventy-eight", "seventy-nine", "eighty", "eighty-one", "eighty-two", "eighty-three", "eighty-four", "eighty-five", "eighty-six", "eighty-seven", "eighty-eight", "eighty-nine", "ninety", "ninety-one", "ninety-two", "ninety-three", "ninety-four", "ninety-five", "ninety-six", "ninety-seven", "ninety-eight", "ninety-nine", "hundred"],
         "ordinals": ["zero", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentyeth", "twenty-first", "twenty-second", "twenty-third", "twenty-fourth", "twenty-fifth", "twenty-sixth", "twenty-seventh", "twenty-eighth", "twenty-ninth", "thirtieth", "thirty-first"]
     },
     "french": {
@@ -29,6 +29,7 @@ var languageGlobal = 'english';
 var runFirstTime = true;
 
 var mon = 'sun';
+var dateOrder = 'mdy';
 
 function leapYear(year) {
     if (year % 4 == 0) // basic rule
@@ -123,6 +124,44 @@ console.log(overallDate.firstDayNumber);
         }
         mon = day;
     }
+}
+
+function dateDigitSwap(order) {
+    if (order !== dateOrder) {
+        if (order === 'dmy') {
+          document.getElementById('clockdate__digit__container--yesterday--month').classList.add("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--yesterday--month').classList.remove("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--yesterday--day').classList.add("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--yesterday--day').classList.remove("clockdate__digit__container--third");
+
+          document.getElementById('clockdate__digit__container--today--month').classList.add("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--today--month').classList.remove("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--today--day').classList.add("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--today--day').classList.remove("clockdate__digit__container--third");
+
+          document.getElementById('clockdate__digit__container--tomorrow--month').classList.add("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--tomorrow--month').classList.remove("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--tomorrow--day').classList.add("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--tomorrow--day').classList.remove("clockdate__digit__container--third");
+
+        } else if (order === 'mdy') {
+            document.getElementById('clockdate__digit__container--yesterday--month').classList.add("clockdate__digit__container--first");
+            document.getElementById('clockdate__digit__container--yesterday--month').classList.remove("clockdate__digit__container--third");
+            document.getElementById('clockdate__digit__container--yesterday--day').classList.add("clockdate__digit__container--third");
+            document.getElementById('clockdate__digit__container--yesterday--day').classList.remove("clockdate__digit__container--first");
+
+            document.getElementById('clockdate__digit__container--today--month').classList.add("clockdate__digit__container--first");
+            document.getElementById('clockdate__digit__container--today--month').classList.remove("clockdate__digit__container--third");
+            document.getElementById('clockdate__digit__container--today--day').classList.add("clockdate__digit__container--third");
+            document.getElementById('clockdate__digit__container--today--day').classList.remove("clockdate__digit__container--first");
+
+            document.getElementById('clockdate__digit__container--tomorrow--month').classList.add("clockdate__digit__container--first");
+            document.getElementById('clockdate__digit__container--tomorrow--month').classList.remove("clockdate__digit__container--third");
+            document.getElementById('clockdate__digit__container--tomorrow--day').classList.add("clockdate__digit__container--third");
+            document.getElementById('clockdate__digit__container--tomorrow--day').classList.remove("clockdate__digit__container--first");
+          }
+        dateOrder = order;
+        }
 }
 
 function languageSwap(language) {

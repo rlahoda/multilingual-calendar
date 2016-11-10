@@ -44,23 +44,23 @@
                     <h2 id="date__yesterday__label" class="text-bold">Yesterday</h2>
                 </div>
                 <div class="clockdate__string__container">
-                    <div class="clockdate__digit__container">
+                    <div id="clockdate__digit__container--yesterday--month" class="clockdate__digit__container clockdate__digit__container--first">
                         <h1 id="date__num__month--yesterday" class="clockdate__digit--num">10</h1>
                         <h3 id="date__word__month--yesterday" class="clockdate__digit--word">October</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--second">
                         <h1 id="date__num__spacer1--yesterday" class="clockdate__digit--num">/</h1>
                         <h3 id="date__num__spacer1--yesterday" class="clockdate__digit--num"></h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div id="clockdate__digit__container--yesterday--day" class="clockdate__digit__container clockdate__digit__container--third">
                         <h1 id="date__num__day--yesterday" class="clockdate__digit--num">9</h1>
                         <h3 id="date__word__day--yesterday" class="clockdate__digit--word">Ninth</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--fourth">
                         <h1 id="date__num__spacer2--yesterday" class="clockdate__digit--num">/</h1>
                         <h3 id="date__word__spacer1--yesterday" class="clockdate__digit--word">,</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--fifth">
                         <h1 id="date__num__year--yesterday" class="clockdate__digit--num">2016</h1>
                         <h3 id="date__word__year--yesterday" class="clockdate__digit--word">Two thousand sixteen</h3>
                     </div>
@@ -71,23 +71,23 @@
                     <h2 id="date__today__label" class="text-bold">Today</h2>
                 </div>
                 <div class="clockdate__string__container">
-                    <div class="clockdate__digit__container">
+                    <div id="clockdate__digit__container--today--month" class="clockdate__digit__container clockdate__digit__container--first">
                         <h1 id="date__num__month--today" class="clockdate__digit--num">10</h1>
                         <h3 id="date__word__month--today" class="clockdate__digit--word">October</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--second">
                         <h1 id="date__num__spacer1--today" class="clockdate__digit--num">/</h1>
                         <h3 id="date__num__spacer1--today" class="clockdate__digit--num"></h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div id="clockdate__digit__container--today--day" class="clockdate__digit__container clockdate__digit__container--third">
                         <h1 id="date__num__day--today" class="clockdate__digit--num">9</h1>
                         <h3 id="date__word__day--today" class="clockdate__digit--word">Ninth</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--fourth">
                         <h1 id="date__num__spacer2--today" class="clockdate__digit--num">/</h1>
                         <h3 id="date__word__spacer1--today" class="clockdate__digit--word">,</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--fifth">
                         <h1 id="date__num__year--today" class="clockdate__digit--num">2016</h1>
                         <h3 id="date__word__year--today" class="clockdate__digit--word">Two thousand sixteen</h3>
                     </div>
@@ -98,23 +98,23 @@
                     <h2 id="date__tomorrow__label" class="text-bold">Tomorrow</h2>
                 </div>
                 <div class="clockdate__string__container">
-                    <div class="clockdate__digit__container">
+                    <div id="clockdate__digit__container--tomorrow--month" class="clockdate__digit__container clockdate__digit__container--first">
                         <h1 id="date__num__month--tomorrow" class="clockdate__digit--num">10</h1>
                         <h3 id="date__word__month--tomorrow" class="clockdate__digit--word">October</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--second">
                         <h1 id="date__num__spacer1--tomorrow" class="clockdate__digit--num">/</h1>
                         <h3 id="date__num__spacer1--tomorrow" class="clockdate__digit--num"></h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div id="clockdate__digit__container--tomorrow--day" class="clockdate__digit__container clockdate__digit__container--third">
                         <h1 id="date__num__day--tomorrow" class="clockdate__digit--num">9</h1>
                         <h3 id="date__word__day--tomorrow" class="clockdate__digit--word">Ninth</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--fourth">
                         <h1 id="date__num__spacer2--tomorrow" class="clockdate__digit--num">/</h1>
                         <h3 id="date__word__spacer1--tomorrow" class="clockdate__digit--word">,</h3>
                     </div>
-                    <div class="clockdate__digit__container">
+                    <div class="clockdate__digit__container clockdate__digit__container--fifth">
                         <h1 id="date__num__year--tomorrow" class="clockdate__digit--num">2016</h1>
                         <h3 id="date__word__year--tomorrow" class="clockdate__digit--word">Two thousand sixteen</h3>
                     </div>
@@ -135,8 +135,12 @@
                 <input type="radio" name="day" value="sun" onclick="if(this.checked){startWeekDay('mon')}"> Monday<br>
               </form>
               <form action="" >
-                <input type="radio" name="day" value="sun"  onclick="if(this.checked){languageSwap('english'), weekNames('english')}" checked> English<br>
-                <input type="radio" name="day" value="sun" onclick="if(this.checked){languageSwap('french'), weekNames('french')}"> French<br>
+                <input type="radio" name="language" value="english"  onclick="if(this.checked){languageSwap('english'), weekNames('english')}" checked> English<br>
+                <input type="radio" name="language" value="french" onclick="if(this.checked){languageSwap('french'), weekNames('french')}"> French<br>
+              </form>
+              <form action="" >
+                <input type="radio" name="order" value="mdy"  onclick="if(this.checked){dateDigitSwap('mdy'), weekNames('english')}" checked> Month, Day, Year<br>
+                <input type="radio" name="order" value="dmy" onclick="if(this.checked){dateDigitSwap('dmy'), weekNames('french')}"> Day, Month, Year<br>
               </form>
 
             </div>

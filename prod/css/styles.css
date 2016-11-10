@@ -373,4 +373,29 @@ h4 {
       -ms-flex-align: center;
           align-items: center; }
 
+.clockdate__digit__container--first {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
+
+.clockdate__digit__container--second {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+
+.clockdate__digit__container--third {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3; }
+
+.clockdate__digit__container--fourth {
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4; }
+
+.clockdate__digit__container--fifth {
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5; }
+
 /*# sourceMappingURL=styles.css.map */
