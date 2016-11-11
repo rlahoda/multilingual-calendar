@@ -10,19 +10,32 @@ var info = {
         "years": ["two thousand sixteen", "two thousand seventeen", "two thousand eighteen"],
         "numbers": ["zero", "one", "two", "three", "four", "five", "six", "Seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine", "fifty", "fifty-one", "fifty-two", "fifty-three", "fifty-four", "fifty-five", "fifty-six", "fifty-seven", "fifty-eight", "fifty-nine", "sixty", "sixty-one", "sixty-two", "sixty-three", "sixty-four", "sixty-five", "sixty-six", "sixty-seven", "sixty-eight", "sixty-nine", "seventy", "seventy-one", "seventy-two", "seventy-three", "seventy-four", "seventy-five", "seventy-six", "seventy-seven", "seventy-eight", "seventy-nine", "eighty", "eighty-one", "eighty-two", "eighty-three", "eighty-four", "eighty-five", "eighty-six", "eighty-seven", "eighty-eight", "eighty-nine", "ninety", "ninety-one", "ninety-two", "ninety-three", "ninety-four", "ninety-five", "ninety-six", "ninety-seven", "ninety-eight", "ninety-nine", "hundred"],
         "ordinals": ["zero", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentyeth", "twenty-first", "twenty-second", "twenty-third", "twenty-fourth", "twenty-fifth", "twenty-sixth", "twenty-seventh", "twenty-eighth", "twenty-ninth", "thirtieth", "thirty-first"]
-    },
-    "french": {
-        "month": "mois",
-        "currenttime": "heure actuelle",
-        "today": "aujourd'hui",
-        "yesterday": "hier",
-        "tomorrow": "demain",
-        "days": ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
-        "months": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
-        "years": ["deux mille seize", "deux mille dix-sept", "deux mille dix-huit"],
-        "numbers": ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf", "vingt", "vingt et un", "vingt-deux", "vingt-trois", "vingt-quatre", "vingt-cinq", "vingt-six", "vingt-sept", "vingt-huit", "vingt-neuf", "trente", "trente et un", "trente-deux", "trente-trois", "trente-quatre", "trente-cinq", "trente-six", "trente-sept", "trente-huit", "trente-neuf", "quarante", "quarante et un", "quarante-deux", "quarante-trois", "quarante-quatre", "quarante-cinq", "quarante-six", "quarante-sept", "quarante-huit", "quarante-neuf", "cinquante", "cinquante et un", "cinquante-deux", "cinquante-trois", "cinquante-quatre", "cinquante-cinq", "cinquante-six", "cinquante-sept", "cinquante-huit", "cinquante-neuf", "soixante", "soixante et un", "soixante-deux", "soixante-trois", "soixante-quatre", "soixante-cinq", "soixante-six", "soixante-sept", "soixante-huit", "soixante-neuf", "soixante-dix", "soixante-et-onze", "soixante-douze", "soixante-treize", "soixante-quatorze", "soixante-quinze", "soixante-seize", "soixante-dix-sept", "soixante-dix-huit", "soixante-dix-neuf", "quatre-vingts", "quatre-vingt-un", "quatre-vingt-deux", "quatre-vingt-trois", "quatre-vingt-quatre", "quatre-vingt-cinq", "quatre-vingt-six", "quatre-vingt-sept", "quatre-vingt-huit", "quatre-vingt-neuf", "quatre-vingt-dix", "quatre-vingt-onze", "quatre-vingt-douze", "quatre-vingt-treize", "quatre-vingt-quatorze", "quatre-vingt-quinze", "quatre-vingt-seize", "quatre-vingt-dix-sept", "quatre-vingt-dix-huit", "quatre-vingt-dix-neuf", "cent"],
-        "ordinals": ["zéro", "premier", "deuxième", "troisième", "quatrième", "cinquième", "sixième", "septième", "huitième", "neuvième", "dixième", "onzième", "douzième", "treizième", "quatorzième", "quinzième", "seizième", "dix-septième", "dix-huitième", "dix-neuvième", "vingtème", "vingt et unième", "vingt-deuxième", "vingt-troisième", "vingt -quatrième", "vingt-cinquième", "vingt-sixième", "vingt-septième", "vingt-huitième", "vingt-neuvième", "trentième", "trente et unième"]
     }
+}
+
+// To change the request, edit this url
+var url = "https://raw.githubusercontent.com/rlahoda/calendar_info/master/starter.json";
+
+// the ajax request
+function ajax() {
+  var xhr = new XMLHttpRequest();
+  // console.log(xhr);
+  xhr.open("GET", url, true);
+  xhr.onreadystatechange = callback;
+  // console.log(xhr.readyState, xhr.status, xhr.statusText);
+  xhr.send();
+
+  function callback() {
+    // console.log(xhr.readyState, xhr.status, xhr.statusText);
+    if (xhr.readyState == 4) {
+      var response = JSON.parse(xhr.responseText);
+      console.log(response);
+      info = response;
+      console.log(info);
+      reCreateLanguageSelector();
+      languageSwap();
+    }
+  }
 }
 
 var languageGlobal = 'english';
@@ -74,7 +87,7 @@ function masterDate() {
     // console.log(day1);
     var firstDay = new Date(year, month1, 1);
     var firstDayNumber = firstDay.getDay();
-    console.log(mon + '3');
+    // console.log(mon + '3');
     if (mon === 'mon') {
         if (firstDayNumber === 0) {
             firstDayNumber = firstDayNumber + 6;
@@ -97,7 +110,7 @@ function startWeekDay(day) {
     startWeekDaySwap(day);
     var overallDate = masterDate();
     var today = overallDate.today;
-console.log(overallDate.firstDayNumber);
+    // console.log(overallDate.firstDayNumber);
     if (day !== mon) {
         if (day === 'mon') {
           if (overallDate.firstDayNumber === 0) {
@@ -165,6 +178,8 @@ function dateDigitSwap(order) {
 }
 
 function languageSwap(language) {
+  document.getElementById("languageSelector").onchange=function() {
+    var language = this.value;
     if (language != languageGlobal) {
         languageGlobal = language;
     }
@@ -172,7 +187,70 @@ function languageSwap(language) {
     startTime();
     weekNames();
     startCal();
+    }
 }
+
+function createLanguageOption(language) {
+    var option = document.createElement("option");
+    option.value = language;
+    var optionText = document.createTextNode(language);
+    option.appendChild(optionText);
+    return option;
+}
+
+function reCreateLanguageSelector() {
+  var parent = document.getElementById('languageSelectorContainer');
+  var child = document.getElementById("languageSelector");
+  parent.removeChild(child);
+
+  createLanguageSelector();
+}
+
+
+function createLanguageSelector() {
+
+  var select = document.createElement("select");
+  select.id = "languageSelector";
+  console.log(Object.getOwnPropertyNames(info));
+  var properties = Object.getOwnPropertyNames(info);
+  console.log(properties[1]);
+  var languages = Object.keys(info).length;
+  for (var i = 0; i < languages; i++) {
+    var option = createLanguageOption(properties[i]);
+    select.appendChild(option);
+  }
+  document.getElementById("languageSelectorContainer").appendChild(select);
+}
+
+//     var h3 = document.createElement("h3");
+//     h3.className = "cal__days__day--text";
+//     h3.id = "h3__" + dayNumber;
+//     var h3Text = document.createTextNode(info[languageGlobal].numbers[dayNumber]);
+//     h3.appendChild(h3Text);
+//
+//     var h4 = document.createElement("h4");
+//     h4.className = "cal__days__day--ordinal";
+//     h4.id = "h4__" + dayNumber;
+//     var h4Text = document.createTextNode(info[languageGlobal].ordinals[dayNumber]);
+//     h4.appendChild(h4Text);
+//
+//     var dayCard = document.createElement("div")
+//         // console.log(dayClass);
+//     if (dayClass) {
+//         dayCard.className = "cal__days__day " + dayClass;
+//     } else {
+//         dayCard.className = "cal__days__day ";
+//     }
+//     dayCard.appendChild(h2);
+//     dayCard.appendChild(h3);
+//     dayCard.appendChild(h4);
+//
+//     // console.log(h3);
+//     // console.log(h4);
+//     // console.log(h5);
+//
+//     document.getElementById("cal__days__grid").appendChild(dayCard)
+// }
 
 function startWeekDaySwap(day) {
     if (day === "mon") {
@@ -363,7 +441,7 @@ function startCal() {
     // console.log(day1);
     var firstDay = new Date(year, month1, 1);
     var firstDayNumber = firstDay.getDay();
-    console.log(mon + '3');
+    // console.log(mon + '3');
     if (mon === 'mon') {
         if (firstDayNumber === 0) {
             firstDayNumber = firstDayNumber + 6;

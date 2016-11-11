@@ -6,10 +6,10 @@
     <link href="css/styles.css" rel="stylesheet" />
     <title>Clock</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,100i,400,400i,600,600i&subset=latin-ext" rel="stylesheet">
-     <script src="scripts/script.js"></script>
+    <script src="scripts/script.js"></script>
 </head>
 
-<body onload="startTime(), weekNames(), startCal()">
+<body onload="startTime(), weekNames(), startCal(), createLanguageSelector(), languageSwap(), ajax()">
     <div class="container" onload="startTime()">
         <div class="today__container">
             <div class="clockdate__container">
@@ -122,27 +122,36 @@
             </div>
         </div>
 
-
         <div class="cal__container">
-            <div class="cal__heading">
-                <h3 id="cal__heading--month" class="cal__heading--text">Month</h3>
-                <h3 class="cal__heading--text">:</h3>
-                <h3 id="cal__heading--monthName" class="cal__heading--text">October</h3>
-            </div>
-            <div class="cal__heading">
-              <form action="" >
-                <input type="radio" name="day" value="sun"  onclick="if(this.checked){startWeekDay('sun')}" checked> Sunday<br>
-                <input type="radio" name="day" value="sun" onclick="if(this.checked){startWeekDay('mon')}"> Monday<br>
-              </form>
-              <form action="" >
+            <div class="cal__heading__container">
+                <div class="cal__heading">
+                    <h3 id="cal__heading--month" class="cal__heading--text">Month</h3>
+                    <h3 class="cal__heading--text">:</h3>
+                    <h3 id="cal__heading--monthName" class="cal__heading--text">October</h3>
+                </div>
+                <div class="cal__heading">
+                    <form action="">
+                        <input type="radio" name="day" value="sun" onclick="if(this.checked){startWeekDay('sun')}" checked> Sunday<br>
+                        <input type="radio" name="day" value="sun" onclick="if(this.checked){startWeekDay('mon')}"> Monday<br>
+                    </form>
+                    <div id="languageSelectorContainer" class="cal__heading">
+                      <!-- <select id="languageSelector" name="">
+                        <option value="english" selected>English</option>
+                        <option value="french">French</option>
+                      </select> -->
+                    </div>
+                    <!-- <form action="" >
                 <input type="radio" name="language" value="english"  onclick="if(this.checked){languageSwap('english'), weekNames('english')}" checked> English<br>
                 <input type="radio" name="language" value="french" onclick="if(this.checked){languageSwap('french'), weekNames('french')}"> French<br>
-              </form>
-              <form action="" >
-                <input type="radio" name="order" value="mdy"  onclick="if(this.checked){dateDigitSwap('mdy'), weekNames('english')}" checked> Month, Day, Year<br>
-                <input type="radio" name="order" value="dmy" onclick="if(this.checked){dateDigitSwap('dmy'), weekNames('french')}"> Day, Month, Year<br>
-              </form>
+              </form> -->
+                    <div class="cal__heading">
+                        <form action="">
+                            <input type="radio" name="order" value="mdy" onclick="if(this.checked){dateDigitSwap('mdy'), weekNames('english')}" checked> Month, Day, Year<br>
+                            <input type="radio" name="order" value="dmy" onclick="if(this.checked){dateDigitSwap('dmy'), weekNames('french')}"> Day, Month, Year<br>
+                        </form>
+                    </div>
 
+                </div>
             </div>
             <div class="cal__week">
                 <div id="cal__week__day--sun" class="cal__week__day cal__week__day--first">
