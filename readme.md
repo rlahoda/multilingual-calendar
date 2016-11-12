@@ -1,5 +1,7 @@
 # Multilingual calendar and date
 
+To see the working version of this code, check it out on CodePen at: [http://codepen.io/rlahoda/pen/ZpKAGj](http://codepen.io/rlahoda/pen/ZpKAGj)
+
 ## This project is a calendar that I created as a way to help with learning French and also Javascript. The idea was to create a calendar that could be changed into different languages so that readers are able to practice knowing the days of the week, numbers, months of the year and other information related to time and date.
 
 ---
