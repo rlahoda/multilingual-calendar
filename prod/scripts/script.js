@@ -18,24 +18,24 @@ var url = "https://raw.githubusercontent.com/rlahoda/calendar_info/master/starte
 
 // the ajax request
 function ajax() {
-    var xhr = new XMLHttpRequest();
-    // console.log(xhr);
-    xhr.open("GET", url, true);
-    xhr.onreadystatechange = callback;
-    // console.log(xhr.readyState, xhr.status, xhr.statusText);
-    xhr.send();
+  var xhr = new XMLHttpRequest();
+  // console.log(xhr);
+  xhr.open("GET", url, true);
+  xhr.onreadystatechange = callback;
+  // console.log(xhr.readyState, xhr.status, xhr.statusText);
+  xhr.send();
 
-    function callback() {
-        // console.log(xhr.readyState, xhr.status, xhr.statusText);
-        if (xhr.readyState == 4) {
-            var response = JSON.parse(xhr.responseText);
-            console.log(response);
-            info = response;
-            console.log(info);
-            reCreateLanguageSelector();
-            languageSwap();
-        }
+  function callback() {
+    // console.log(xhr.readyState, xhr.status, xhr.statusText);
+    if (xhr.readyState == 4) {
+      var response = JSON.parse(xhr.responseText);
+      console.log(response);
+      info = response;
+      console.log(info);
+      reCreateLanguageSelector();
+      languageSwap();
     }
+  }
 }
 
 var languageGlobal = 'english';
@@ -102,16 +102,7 @@ function masterDate() {
 
     var daysLeft = 42 - (monthLength + firstDayNumber);
 
-    return {
-        today: today,
-        year: year,
-        day: day,
-        month: month,
-        month1: month1,
-        day1: day1,
-        firstDay: firstDay,
-        firstDayNumber: firstDayNumber
-    }
+    return {today : today, year : year, day : day, month : month, month1 : month1, day1 : day1, firstDay : firstDay, firstDayNumber : firstDayNumber}
 
 }
 
@@ -122,26 +113,26 @@ function startWeekDay(day) {
     // console.log(overallDate.firstDayNumber);
     if (day !== mon) {
         if (day === 'mon') {
-            if (overallDate.firstDayNumber === 0) {
-                for (var i = 0; i < 6; i++) {
-                    createSpacer(i);
-                }
-            } else {
-                var parent = document.getElementById('cal__days__grid');
-                var child = document.getElementById("cal__days__spacer0");
-                parent.removeChild(child);
-            }
+          if (overallDate.firstDayNumber === 0) {
+            for (var i = 0; i < 6; i++) {
+              createSpacer(i);
+              }
+          } else {
+            var parent = document.getElementById('cal__days__grid');
+            var child = document.getElementById("cal__days__spacer0");
+            parent.removeChild(child);
+          }
 
         } else if (day === 'sun') {
-            if (overallDate.firstDayNumber === 6) {
-                for (var i = 0; i < 6; i++) {
-                    var parent = document.getElementById('cal__days__grid');
-                    var child = document.getElementById("cal__days__spacer" + i);
-                    parent.removeChild(child);
-                }
-            } else {
-                createSpacer(0);
-            }
+          if (overallDate.firstDayNumber === 6) {
+            for (var i = 0; i < 6; i++) {
+              var parent = document.getElementById('cal__days__grid');
+              var child = document.getElementById("cal__days__spacer" + i);
+              parent.removeChild(child);
+              }
+          } else {
+            createSpacer(0);
+          }
 
         }
         mon = day;
@@ -151,20 +142,20 @@ function startWeekDay(day) {
 function dateDigitSwap(order) {
     if (order !== dateOrder) {
         if (order === 'dmy') {
-            document.getElementById('clockdate__digit__container--yesterday--month').classList.add("clockdate__digit__container--third");
-            document.getElementById('clockdate__digit__container--yesterday--month').classList.remove("clockdate__digit__container--first");
-            document.getElementById('clockdate__digit__container--yesterday--day').classList.add("clockdate__digit__container--first");
-            document.getElementById('clockdate__digit__container--yesterday--day').classList.remove("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--yesterday--month').classList.add("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--yesterday--month').classList.remove("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--yesterday--day').classList.add("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--yesterday--day').classList.remove("clockdate__digit__container--third");
 
-            document.getElementById('clockdate__digit__container--today--month').classList.add("clockdate__digit__container--third");
-            document.getElementById('clockdate__digit__container--today--month').classList.remove("clockdate__digit__container--first");
-            document.getElementById('clockdate__digit__container--today--day').classList.add("clockdate__digit__container--first");
-            document.getElementById('clockdate__digit__container--today--day').classList.remove("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--today--month').classList.add("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--today--month').classList.remove("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--today--day').classList.add("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--today--day').classList.remove("clockdate__digit__container--third");
 
-            document.getElementById('clockdate__digit__container--tomorrow--month').classList.add("clockdate__digit__container--third");
-            document.getElementById('clockdate__digit__container--tomorrow--month').classList.remove("clockdate__digit__container--first");
-            document.getElementById('clockdate__digit__container--tomorrow--day').classList.add("clockdate__digit__container--first");
-            document.getElementById('clockdate__digit__container--tomorrow--day').classList.remove("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--tomorrow--month').classList.add("clockdate__digit__container--third");
+          document.getElementById('clockdate__digit__container--tomorrow--month').classList.remove("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--tomorrow--day').classList.add("clockdate__digit__container--first");
+          document.getElementById('clockdate__digit__container--tomorrow--day').classList.remove("clockdate__digit__container--third");
 
         } else if (order === 'mdy') {
             document.getElementById('clockdate__digit__container--yesterday--month').classList.add("clockdate__digit__container--first");
@@ -181,21 +172,21 @@ function dateDigitSwap(order) {
             document.getElementById('clockdate__digit__container--tomorrow--month').classList.remove("clockdate__digit__container--third");
             document.getElementById('clockdate__digit__container--tomorrow--day').classList.add("clockdate__digit__container--third");
             document.getElementById('clockdate__digit__container--tomorrow--day').classList.remove("clockdate__digit__container--first");
-        }
+          }
         dateOrder = order;
-    }
+        }
 }
 
 function languageSwap(language) {
-    document.getElementById("languageSelector").onchange = function() {
-        var language = this.value;
-        if (language != languageGlobal) {
-            languageGlobal = language;
-        }
+  document.getElementById("languageSelector").onchange=function() {
+    var language = this.value;
+    if (language != languageGlobal) {
+        languageGlobal = language;
+    }
 
-        startTime();
-        weekNames();
-        startCal();
+    startTime();
+    weekNames();
+    startCal();
     }
 }
 
@@ -208,27 +199,27 @@ function createLanguageOption(language) {
 }
 
 function reCreateLanguageSelector() {
-    var parent = document.getElementById('languageSelectorContainer');
-    var child = document.getElementById("languageSelector");
-    parent.removeChild(child);
+  var parent = document.getElementById('languageSelectorContainer');
+  var child = document.getElementById("languageSelector");
+  parent.removeChild(child);
 
-    createLanguageSelector();
+  createLanguageSelector();
 }
 
 
 function createLanguageSelector() {
 
-    var select = document.createElement("select");
-    select.id = "languageSelector";
-    console.log(Object.getOwnPropertyNames(info));
-    var properties = Object.getOwnPropertyNames(info);
-    console.log(properties[1]);
-    var languages = Object.keys(info).length;
-    for (var i = 0; i < languages; i++) {
-        var option = createLanguageOption(properties[i]);
-        select.appendChild(option);
-    }
-    document.getElementById("languageSelectorContainer").appendChild(select);
+  var select = document.createElement("select");
+  select.id = "languageSelector";
+  console.log(Object.getOwnPropertyNames(info));
+  var properties = Object.getOwnPropertyNames(info);
+  console.log(properties[1]);
+  var languages = Object.keys(info).length;
+  for (var i = 0; i < languages; i++) {
+    var option = createLanguageOption(properties[i]);
+    select.appendChild(option);
+  }
+  document.getElementById("languageSelectorContainer").appendChild(select);
 }
 
 //     var h3 = document.createElement("h3");

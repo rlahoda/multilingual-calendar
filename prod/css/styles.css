@@ -1,0 +1,421 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html {
+  box-sizing: border-box; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #6f6f6f; }
+
+h1 {
+  font-size: 1.5em; }
+  h1::first-letter {
+    text-transform: capitalize; }
+  @media only screen and (min-width: 1060px) {
+    h1 {
+      font-size: 2em; } }
+  @media only screen and (min-width: 1400px) {
+    h1 {
+      font-size: 4em; } }
+
+h2 {
+  font-size: 1.25em; }
+  h2::first-letter {
+    text-transform: capitalize; }
+  @media only screen and (min-width: 1060px) {
+    h2 {
+      font-size: 1.5em; } }
+  @media only screen and (min-width: 1400px) {
+    h2 {
+      font-size: 2em; } }
+
+h3 {
+  font-size: 1em; }
+  h3::first-letter {
+    text-transform: capitalize; }
+  @media only screen and (min-width: 1060px) {
+    h3 {
+      font-size: 1.25em; } }
+  @media only screen and (min-width: 1400px) {
+    h3 {
+      font-size: 1.5em; } }
+
+h4 {
+  font-size: 1em; }
+  h4::first-letter {
+    text-transform: capitalize; }
+  @media only screen and (min-width: 1060px) {
+    h4 {
+      font-size: 1em; } }
+  @media only screen and (min-width: 1400px) {
+    h4 {
+      font-size: 1em; } }
+
+.text-bold {
+  font-weight: 600; }
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  @media only screen and (min-width: 1060px) {
+    .container {
+      min-height: 100vh; } }
+
+/* calendar */
+.cal__container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 98%;
+  margin: 5px;
+  padding: 1%;
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c0c0c0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  @media only screen and (min-width: 1400px) {
+    .cal__container {
+      width: 60%; } }
+
+.cal__heading__container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.cal__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 25%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto; }
+
+#languageSelectorContainer {
+  padding: 5px;
+  margin: 5px; }
+
+.cal__week {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.cal__week__day {
+  margin: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 12%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.cal__week__day--text {
+  font-size: 0;
+  width: 0; }
+  .cal__week__day--text::first-letter {
+    font-size: 20px; }
+  @media only screen and (min-width: 600px) {
+    .cal__week__day--text {
+      font-size: inherit;
+      width: auto; }
+      .cal__week__day--text::first-letter {
+        font-size: inherit; } }
+
+.cal__days__grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100%; }
+
+.cal__days__spacer, .cal__days__day, .cal__days__spacer--end {
+  padding: 1em;
+  margin: 10px 1% 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 12%;
+  box-shadow: 2px 2px 5px 0 transparent;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0; }
+
+.cal__days__day {
+  background-color: #dff8fd;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c3f3fd;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
+
+.cal__days__spacer--end {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+
+.cal__days__day--text {
+  visibility: hidden;
+  height: 0; }
+  @media only screen and (min-width: 600px) {
+    .cal__days__day--text {
+      visibility: visible;
+      height: auto; } }
+
+.cal__days__day--ordinal {
+  visibility: hidden;
+  height: 0; }
+  @media only screen and (min-width: 600px) {
+    .cal__days__day--ordinal {
+      visibility: visible;
+      height: auto; } }
+
+.cal__days__day--weekend {
+  background-color: #fefde6;
+  border-color: #fefabd; }
+
+.cal__days__day--today {
+  background-color: #fddfed;
+  border-color: #febddb; }
+
+.cal__week__day {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
+
+.cal__week__day--first {
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0; }
+
+.cal__week__day--last {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+
+.today__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 98%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c0c0c0; }
+  @media only screen and (min-width: 1060px) {
+    .today__container {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; } }
+  @media only screen and (min-width: 1400px) {
+    .today__container {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      width: 10%;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; } }
+
+.clockdate__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 55%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  @media only screen and (min-width: 600px) {
+    .clockdate__container {
+      width: 45%; } }
+  @media only screen and (min-width: 1060px) {
+    .clockdate__container {
+      width: 45%; } }
+  @media only screen and (min-width: 1400px) {
+    .clockdate__container {
+      width: 100%; } }
+
+.clockdate__string__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 80%; }
+
+.clockdate__digit__container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.clockdate__digit__container--first {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
+
+.clockdate__digit__container--second {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+
+.clockdate__digit__container--third {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3; }
+
+.clockdate__digit__container--fourth {
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4; }
+
+.clockdate__digit__container--fifth {
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5; }
+
+/*# sourceMappingURL=styles.css.map */
