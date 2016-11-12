@@ -125,32 +125,41 @@
         <div class="cal__container">
             <div class="cal__heading__container">
                 <div class="cal__heading">
-                    <h3 id="cal__heading--month" class="cal__heading--text">Month</h3>
-                    <h3 class="cal__heading--text">:</h3>
-                    <h3 id="cal__heading--monthName" class="cal__heading--text">October</h3>
+                    <h2 id="cal__heading--month">Month</h2>
+                    <h2>:</h2>
+                    <h2 id="cal__heading--monthName">October</h2>
                 </div>
-                <div class="cal__heading">
-                    <form action="">
+                <div class="cal__heading cal__heading--larger">
+                  <div class="cal__heading--box"><h3>Options:</h3></div>
+                  <div id="languageSelectorContainer" class="cal__heading--box">
+                    <h4>Language:</h4>
+                    <!-- <select id="languageSelector" name="">
+                      <option value="english" selected>English</option>
+                      <option value="french">French</option>
+                    </select> -->
+                  </div>
+                    <div class="cal__heading--box">
+                      <h4>Week Start Day</h4>
+                      <form action="">
                         <input type="radio" name="day" value="sun" onclick="if(this.checked){startWeekDay('sun')}" checked> Sunday<br>
                         <input type="radio" name="day" value="sun" onclick="if(this.checked){startWeekDay('mon')}"> Monday<br>
                     </form>
-                    <div id="languageSelectorContainer" class="cal__heading">
-                      <!-- <select id="languageSelector" name="">
-                        <option value="english" selected>English</option>
-                        <option value="french">French</option>
-                      </select> -->
-                    </div>
-                    <!-- <form action="" >
-                <input type="radio" name="language" value="english"  onclick="if(this.checked){languageSwap('english'), weekNames('english')}" checked> English<br>
-                <input type="radio" name="language" value="french" onclick="if(this.checked){languageSwap('french'), weekNames('french')}"> French<br>
-              </form> -->
-                    <div class="cal__heading">
-                        <form action="">
+                  </div>
+
+                        <div class="cal__heading--box">
+                          <h4>Date Order:</h4>
+                          <form action="">
                             <input type="radio" name="order" value="mdy" onclick="if(this.checked){dateDigitSwap('mdy'), weekNames('english')}" checked> Month, Day, Year<br>
                             <input type="radio" name="order" value="dmy" onclick="if(this.checked){dateDigitSwap('dmy'), weekNames('french')}"> Day, Month, Year<br>
                         </form>
-                    </div>
+                      </div>
 
+                    <div class="github-mention">
+                      <p>
+                        <a href="https://github.com/rlahoda/multilingual-calendar">Check out the source files on Github and add more languages!</a>
+                      </p>
+
+                  </div>
                 </div>
             </div>
             <div class="cal__week">

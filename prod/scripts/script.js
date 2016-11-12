@@ -14,7 +14,7 @@ var info = {
 }
 
 // To change the request, edit this url
-var url = "https://raw.githubusercontent.com/rlahoda/calendar_info/master/starter.json";
+var url = "https://raw.githubusercontent.com/rlahoda/multilingual-calendar/master/languages.json";
 
 // the ajax request
 function ajax() {

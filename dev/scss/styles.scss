@@ -44,6 +44,15 @@ body {
   color: $primary-grey;
 }
 
+a,
+a:visited {
+  color: $primary-grey;
+}
+
+.light-grey {
+  color: $light-grey;
+}
+
 h1 {
   font-size: 1.5em;
 
@@ -62,6 +71,7 @@ h1 {
 
 h2 {
   font-size: 1.25em;
+  margin: 2px;
 
   &::first-letter {
     text-transform: capitalize;
@@ -79,6 +89,7 @@ h2 {
 h3 {
   font-size: 1em;
 
+
   &::first-letter {
     text-transform: capitalize;
   }
@@ -94,6 +105,7 @@ h3 {
 
 h4 {
   font-size: 1em;
+  font-weight: 600;
 
   &::first-letter {
     text-transform: capitalize;
@@ -129,11 +141,12 @@ h4 {
   flex: 1 1 auto;
   width: 98%;
   margin: 5px;
-  padding: 1%;
+  // padding: 1%;
   border-radius: 25px;
   border-style: solid;
   border-width: 1px;
   border-color: $light-grey;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   // background-color: blue;
@@ -149,21 +162,49 @@ h4 {
   justify-content: center;
   align-items: center;
   // flex-direction: row;
-  // background-color: blue;
+  background-color: #ededed;
 }
 
 .cal__heading {
   display: flex;
-  // flex-direction: column;
   justify-content: center;
   width: 25%;
   flex: 1 1 auto;
-  // background-color: pink;
+  padding: 5px;
+  overflow: hidden;
+  // align-items: flex-start;
+// background-color: orange;
+}
+
+.cal__heading--larger {
+  flex: 2 1 auto;
+  width: 50%;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
 #languageSelectorContainer {
+  padding: 0 5px;
+  // margin: 5px;
+}
+
+.github-mention {
+  // color: white;
+  background-color: #edf3fe;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: blue;
+  display: flex;
+  align-items: center;
   padding: 5px;
-  margin: 5px;
+  width: 30%;
+}
+
+.cal__heading--box {
+  text-align: center;
+  // display: flex;
+  // align-items: flex-start;
+  // background-color: blue;
 }
 
 .cal__week {
@@ -202,6 +243,7 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  padding: 0.5%;
 }
 
 .cal__days__spacer {
