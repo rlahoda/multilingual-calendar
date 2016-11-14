@@ -352,6 +352,7 @@ h4 {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  text-align: center;
   margin: 5px;
   padding: 10px;
   border-radius: 25px;
@@ -413,7 +414,8 @@ h4 {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  width: 80%; }
+  width: 80%;
+  min-height: 20%; }
 
 .clockdate__digit__container {
   -webkit-box-flex: 1;

@@ -89,7 +89,6 @@ h2 {
 h3 {
   font-size: 1em;
 
-
   &::first-letter {
     text-transform: capitalize;
   }
@@ -141,7 +140,6 @@ h4 {
   flex: 1 1 auto;
   width: 98%;
   margin: 5px;
-  // padding: 1%;
   border-radius: 25px;
   border-style: solid;
   border-width: 1px;
@@ -149,7 +147,7 @@ h4 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  // background-color: blue;
+
   @include respond-at($bp-large) {
     width: 60%;
   }
@@ -157,11 +155,9 @@ h4 {
 
 .cal__heading__container {
   width: 100%;
-  // height: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  // flex-direction: row;
   background-color: #ededed;
 }
 
@@ -172,8 +168,6 @@ h4 {
   flex: 1 1 auto;
   padding: 5px;
   overflow: hidden;
-  // align-items: flex-start;
-// background-color: orange;
 }
 
 .cal__heading--larger {
@@ -185,11 +179,9 @@ h4 {
 
 #languageSelectorContainer {
   padding: 0 5px;
-  // margin: 5px;
 }
 
 .github-mention {
-  // color: white;
   background-color: #edf3fe;
   border-style: solid;
   border-radius: 5px;
@@ -202,9 +194,6 @@ h4 {
 
 .cal__heading--box {
   text-align: center;
-  // display: flex;
-  // align-items: flex-start;
-  // background-color: blue;
 }
 
 .cal__week {
@@ -223,7 +212,6 @@ h4 {
 .cal__week__day--text {
   font-size: 0;
   width: 0;
-  // background-color: blue;
 
   &::first-letter {
     font-size: 20px;
@@ -324,15 +312,16 @@ h4 {
   flex: 1 1 auto;
   flex-wrap: wrap;
   width: 98%;
-  flex-direction: row; //switch this to row for horizontal layout
-  align-items: flex-start; //this needs to change to flex-start if row
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: center;
   margin: 5px;
   padding: 10px;
   border-radius: 25px;
   border-style: solid;
   border-width: 1px;
   border-color: $light-grey;
-  // background-color: pink;
+
   @include respond-at($bp-med) {
     flex-direction: row;
     align-items: center;
@@ -350,12 +339,11 @@ h4 {
   flex-direction: column;
   flex: 1 1 auto;
   width: 55%;
-  // margin: 5% 1%;
   margin-bottom: 5px;
   margin-top: 5px;
   align-items: center;
   justify-content: center;
-  // background-color: pink;
+
   @include respond-at($bp-xsmall) {
     width: 45%;
   }
@@ -369,16 +357,11 @@ h4 {
   }
 }
 
-// .clockdate__title__container {
-//   width: 100%;
-//   flex: 1 1 auto;
-//   // background-color: green;
-// }
-
 .clockdate__string__container {
   display: flex;
   justify-content: space-around;
   width: 80%;
+  min-height: 20%;
 }
 
 .clockdate__digit__container {
