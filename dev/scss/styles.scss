@@ -1,11 +1,15 @@
 @import "partials/reset";
 
 @mixin respond-at($media) {
-  @media only screen and (min-width: $media) { @content; }
+  @media only screen and (min-width: $media) {
+    @content;
+  }
 }
 
 @mixin respond-ht($media) {
-  @media only screen and (min-height: $media) { @content; }
+  @media only screen and (min-height: $media) {
+    @content;
+  }
 }
 
 html {
@@ -17,6 +21,7 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
 $base-clr: #2ca8c8;
 $base-20l: (lighten($base-clr, 20%));
 $base-20d: (darken($base-clr, 20%));
@@ -25,17 +30,14 @@ $accent-20l: (lighten($accent-clr, 20%));
 $accent-20d: (darken($accent-clr, 20%));
 $primary-grey: #6f6f6f;
 $light-grey: #c0c0c0;
-
 // Width Breakpoints
 $bp-xsmall: 600px;
 $bp-small: 780;
 $bp-med: 1060px;
 $bp-large: 1400px;
-
 // Height Breakpoints
 $bph-small: 740px;
 $bph-med: 825px;
-
 body {
   font-family: 'Josefin Sans', sans-serif;
   font-style: normal;
@@ -54,69 +56,57 @@ a:visited {
 }
 
 h1 {
-  font-size: 1.5em;
-
+  font-size: 1.7em;
   &::first-letter {
     text-transform: capitalize;
   }
-
-  @include respond-at($bp-med) {
-    font-size: 2em;
-  }
-
-  @include respond-at($bp-large) {
-    font-size: 4em;
-  }
+  // @include respond-at($bp-med) {
+  //   font-size: 2em;
+  // }
+  // @include respond-at($bp-large) {
+  //   font-size: 4em;
+  // }
 }
 
 h2 {
-  font-size: 1.25em;
+  font-size: 1.5em;
   margin: 2px;
-
   &::first-letter {
     text-transform: capitalize;
   }
-
-  @include respond-at($bp-med) {
-    font-size: 1.5em;
-  }
-
-  @include respond-at($bp-large) {
-    font-size: 2em;
-  }
+  // @include respond-at($bp-med) {
+  //   font-size: 1.5em;
+  // }
+  // @include respond-at($bp-large) {
+  //   font-size: 2em;
+  // }
 }
 
 h3 {
   font-size: 1em;
-
   &::first-letter {
     text-transform: capitalize;
   }
-
-  @include respond-at($bp-med) {
-    font-size: 1.25em;
-  }
-
-  @include respond-at($bp-large) {
-    font-size: 1.5em;
-  }
+  // @include respond-at($bp-med) {
+  //   font-size: 1.25em;
+  // }
+  // @include respond-at($bp-large) {
+  //   font-size: 1.5em;
+  // }
 }
 
 h4 {
-  font-size: 1em;
+  font-size: 0.7em;
   font-weight: 600;
-
   &::first-letter {
     text-transform: capitalize;
   }
-
-  @include respond-at($bp-med) {
-    font-size: 1em;
-  }
-
-  @include respond-at($bp-large) {
-    font-size: 1em;
-  }
+  // @include respond-at($bp-med) {
+  //   font-size: 1em;
+  // }
+  // @include respond-at($bp-large) {
+  //   font-size: 1em;
+  // }
 }
 
 .text-bold {
@@ -129,13 +119,14 @@ h4 {
   width: 100%;
   min-height: 100vh;
   flex-wrap: wrap;
-
   @include respond-at($bp-med) {
     min-height: 100vh;
   }
 }
 
+
 /* calendar */
+
 .cal__container {
   flex: 1 1 auto;
   width: 98%;
@@ -147,8 +138,7 @@ h4 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-
-  @include respond-at($bp-large) {
+  @include respond-at($bp-med) {
     width: 60%;
   }
 }
@@ -212,15 +202,12 @@ h4 {
 .cal__week__day--text {
   font-size: 0;
   width: 0;
-
   &::first-letter {
     font-size: 20px;
   }
-
   @include respond-at($bp-xsmall) {
     font-size: inherit;
     width: auto;
-
     &::first-letter {
       font-size: inherit;
     }
@@ -246,7 +233,6 @@ h4 {
 
 .cal__days__day {
   @extend .cal__days__spacer;
-
   background-color: #dff8fd;
   justify-content: center;
   flex-direction: column;
@@ -257,18 +243,17 @@ h4 {
   border-color: #c3f3fd;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.15);
   order: 1;
+  text-align: center;
 }
 
 .cal__days__spacer--end {
   @extend .cal__days__spacer;
-
   order: 2;
 }
 
 .cal__days__day--text {
   visibility: hidden;
   height: 0;
-
   @include respond-at($bp-xsmall) {
     visibility: visible;
     height: auto;
@@ -278,7 +263,6 @@ h4 {
 .cal__days__day--ordinal {
   visibility: hidden;
   height: 0;
-
   @include respond-at($bp-xsmall) {
     visibility: visible;
     height: auto;
@@ -321,16 +305,15 @@ h4 {
   border-style: solid;
   border-width: 1px;
   border-color: $light-grey;
-
+  // @include respond-at($bp-med) {
+  //   flex-direction: row;
+  //   align-items: center;
+  // }
   @include respond-at($bp-med) {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  @include respond-at($bp-large) {
     flex-direction: column;
     width: 10%;
     flex-wrap: nowrap;
+    align-items: center;
   }
 }
 
@@ -343,16 +326,13 @@ h4 {
   margin-top: 5px;
   align-items: center;
   justify-content: center;
-
   @include respond-at($bp-xsmall) {
     width: 45%;
   }
-
+  // @include respond-at($bp-med) {
+  //   width: 45%;
+  // }
   @include respond-at($bp-med) {
-    width: 45%;
-  }
-
-  @include respond-at($bp-large) {
     width: 100%;
   }
 }

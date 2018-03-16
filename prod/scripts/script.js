@@ -81,7 +81,7 @@ function masterDate() {
 
     var month = today.getMonth() + 1;
     if (month < 10)
-        month = "0" + month;
+
     var month1 = today.getMonth();
     var day1 = today.getDate();
     // console.log(day1);
@@ -286,7 +286,6 @@ function startTime() {
     // console.log(day);
     var month = today.getMonth() + 1;
     if (month < 10)
-        month = "0" + month;
     var year_word = year - 2016;
 
 
@@ -295,7 +294,6 @@ function startTime() {
         year_y += 1900;
     var month_y = yesterday.getMonth() + 1;
     if (month < 10)
-        month = "0" + month;
     var year_y_word = year_y - 2016;
 
     var year_t = tomorrow.getYear();
@@ -305,7 +303,6 @@ function startTime() {
     var year_t_word = year_t - 2016;
 
     if (month < 10)
-        month = "0" + month;
     var daym = tomorrow.getDate();
     if (daym < 10)
         daym = "0" + daym;
@@ -435,7 +432,6 @@ function startCal() {
 
     var month = today.getMonth() + 1;
     if (month < 10)
-        month = "0" + month;
     var month1 = today.getMonth();
     var day1 = today.getDate();
     // console.log(day1);
