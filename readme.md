@@ -26,6 +26,13 @@ The calendar pulls the language information using an AJAX call to the languages.
   * The next few years (my current has 2016, 2017 and 2018 written out)
   * The numbers from 0 to 100
   * The ordinal numbers (first, second, third, etc) from 0 to 31st
+ 1. **If you have a language (such as German) that has very long words, to allow it to break the text into multiple lines appropriately, please add \u00ad inside the word where you want it to break. This will tell the browser to add a hyphen (-) in the word.**
+  * So in German the word for 2018 is "zweitausendachtzehn". Written with the break character it would be: "zweitausend\u00adachtzehn" and would result in this:
+  
+  "zweitausend-
+  
+  achtzehn"
+  
 1. Once you have the full code block translated, add it to the end of the language list in the `languages.json` file and create a pull request.
 
 *Remember, the JSON format requires that there's a comma after every block of the code except the last one. So if you add your language to the end you must add a comma at the end of the block before it!*
