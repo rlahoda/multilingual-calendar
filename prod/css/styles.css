@@ -95,15 +95,15 @@ h4 {
 .container {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
+  -ms-flex-direction: column;
+      flex-direction: column;
   width: 100%;
-  min-height: 100vh;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+  min-height: 100vh; }
   @media only screen and (min-width: 1060px) {
     .container {
-      min-height: 100vh; } }
+      min-height: 100vh;
+      -ms-flex-direction: row;
+          flex-direction: row; } }
 
 /* calendar */
 .cal__container {
@@ -132,27 +132,39 @@ h4 {
       justify-content: center;
   -ms-flex-align: center;
       align-items: center;
-  background-color: #ededed; }
+  background-color: #ededed;
+  -ms-flex-direction: column;
+      flex-direction: column; }
+  @media only screen and (min-width: 600px) {
+    .cal__heading__container {
+      -ms-flex-direction: row;
+          flex-direction: row; } }
 
 .cal__heading {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
       justify-content: center;
-  width: 25%;
+  width: 100%;
   -ms-flex: 1 1 auto;
       flex: 1 1 auto;
   padding: 5px;
   overflow: hidden; }
+  @media only screen and (min-width: 600px) {
+    .cal__heading {
+      width: 25%; } }
 
 .cal__heading--larger {
   -ms-flex: 2 1 auto;
       flex: 2 1 auto;
-  width: 50%;
+  width: 100%;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -ms-flex-align: start;
       align-items: flex-start; }
+  @media only screen and (min-width: 600px) {
+    .cal__heading--larger {
+      width: 50%; } }
 
 #languageSelectorContainer {
   padding: 0 5px; }
@@ -205,7 +217,7 @@ h4 {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 100%;
+  height: auto;
   padding: 0.5%; }
 
 .cal__days__spacer, .cal__days__day, .cal__days__spacer--end {

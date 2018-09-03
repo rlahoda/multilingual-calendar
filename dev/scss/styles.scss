@@ -115,12 +115,12 @@ h4 {
 
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  flex-wrap: wrap;
   @include respond-at($bp-med) {
     min-height: 100vh;
+    flex-direction: row;
   }
 }
 
@@ -149,12 +149,19 @@ h4 {
   justify-content: center;
   align-items: center;
   background-color: #ededed;
+  flex-direction: column;
+  @include respond-at($bp-xsmall) {
+    flex-direction: row;
+  }
 }
 
 .cal__heading {
   display: flex;
   justify-content: center;
-  width: 25%;
+  width: 100%;
+  @include respond-at($bp-xsmall) {
+    width: 25%;
+  }
   flex: 1 1 auto;
   padding: 5px;
   overflow: hidden;
@@ -162,7 +169,10 @@ h4 {
 
 .cal__heading--larger {
   flex: 2 1 auto;
-  width: 50%;
+  width: 100%;
+  @include respond-at($bp-xsmall) {
+    width: 50%;
+  }
   justify-content: space-around;
   align-items: flex-start;
 }
@@ -217,7 +227,7 @@ h4 {
 .cal__days__grid {
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
+  height: auto;
   padding: 0.5%;
 }
 
