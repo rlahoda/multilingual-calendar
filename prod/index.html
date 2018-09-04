@@ -131,7 +131,7 @@
                     <h2 id="cal__heading--monthName">October</h2>
                 </div>
                 <div class="cal__heading cal__heading--larger">
-                  <div class="cal__heading--box"><h3>Options:</h3></div>
+                  <div class="cal__heading--box cal__heading--options"><h3>Options:</h3></div>
                   <div id="languageSelectorContainer" class="cal__heading--box">
                     <h4>Language:</h4>
                     <!-- <select id="languageSelector" name="">
@@ -139,7 +139,7 @@
                       <option value="french">French</option>
                     </select> -->
                   </div>
-                    <div class="cal__heading--box">
+                    <div class="cal__heading--box cal__heading--weekstart">
                       <h4>Week Start Day</h4>
                       <form action="">
                         <input type="radio" name="day" value="sun" onclick="if(this.checked){startWeekDay('sun')}" checked> Sunday<br>
@@ -147,7 +147,7 @@
                     </form>
                   </div>
 
-                        <div class="cal__heading--box">
+                        <div class="cal__heading--box cal__heading--dateOrder">
                           <h4>Date Order:</h4>
                           <form action="">
                             <input type="radio" name="order" value="mdy" onclick="if(this.checked){dateDigitSwap('mdy'), weekNames('english')}" checked> Month, Day, Year<br>

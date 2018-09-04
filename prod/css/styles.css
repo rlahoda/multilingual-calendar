@@ -73,21 +73,30 @@ h1 {
     text-transform: capitalize; }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 2px; }
   h2::first-letter {
     text-transform: capitalize; }
+  @media only screen and (min-width: 1060px) {
+    h2 {
+      font-size: 1.5em; } }
 
 h3 {
-  font-size: 1em; }
+  font-size: 0.8em; }
   h3::first-letter {
     text-transform: capitalize; }
+  @media only screen and (min-width: 1060px) {
+    h3 {
+      font-size: 1em; } }
 
 h4 {
-  font-size: 0.7em;
+  font-size: 0.5em;
   font-weight: 600; }
   h4::first-letter {
     text-transform: capitalize; }
+  @media only screen and (min-width: 1060px) {
+    h4 {
+      font-size: 0.7em; } }
 
 .text-bold {
   font-weight: 600; }
@@ -99,11 +108,25 @@ h4 {
       flex-direction: column;
   width: 100%;
   min-height: 100vh; }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .container {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr;
+          grid-template-columns: 1fr;
+      grid-gap: 10px; } }
   @media only screen and (min-width: 1060px) {
     .container {
       min-height: 100vh;
       -ms-flex-direction: row;
-          flex-direction: row; } }
+          flex-direction: row; }
+      @supports ((display: -ms-grid) or (display: grid)) {
+        .container {
+          display: -ms-grid;
+          display: grid;
+          -ms-grid-columns: 1fr 3fr;
+              grid-template-columns: 1fr 3fr;
+          grid-gap: 10px; } } }
 
 /* calendar */
 .cal__container {
@@ -120,9 +143,16 @@ h4 {
   display: flex;
   -ms-flex-direction: column;
       flex-direction: column; }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .cal__container {
+      margin: 0; } }
   @media only screen and (min-width: 1060px) {
     .cal__container {
-      width: 60%; } }
+      width: 60%; }
+      @supports ((display: -ms-grid) or (display: grid)) {
+        .cal__container {
+          width: 100%;
+          margin: 0; } } }
 
 .cal__heading__container {
   width: 100%;
@@ -135,7 +165,7 @@ h4 {
   background-color: #ededed;
   -ms-flex-direction: column;
       flex-direction: column; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 780px) {
     .cal__heading__container {
       -ms-flex-direction: row;
           flex-direction: row; } }
@@ -150,7 +180,7 @@ h4 {
       flex: 1 1 auto;
   padding: 5px;
   overflow: hidden; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 780px) {
     .cal__heading {
       width: 25%; } }
 
@@ -162,12 +192,27 @@ h4 {
       justify-content: space-around;
   -ms-flex-align: start;
       align-items: flex-start; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 780px) {
     .cal__heading--larger {
       width: 50%; } }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .cal__heading--larger {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-rows: auto;
+          grid-template-rows: auto;
+      -ms-grid-columns: (1fr)[3];
+          grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: "options options options" "language weekstart dateorder" "github github github"; } }
+  @media only screen and (min-width: 1060px) {
+    .cal__heading--larger {
+      -ms-grid-columns: (1fr)[5];
+          grid-template-columns: repeat(5, 1fr);
+      grid-template-areas: "options language weekstart dateorder github"; } }
 
 #languageSelectorContainer {
-  padding: 0 5px; }
+  padding: 0 5px;
+  grid-area: language; }
 
 .github-mention {
   background-color: #edf3fe;
@@ -180,18 +225,38 @@ h4 {
       align-items: center;
   padding: 5px;
   width: 30%; }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .github-mention {
+      grid-area: github;
+      width: 100%; } }
 
 .cal__heading--box {
   text-align: center; }
+
+.cal__heading--options {
+  grid-area: options; }
+
+.cal__heading--weekstart {
+  grid-area: weekstart; }
+
+.cal__heading--dateOrder {
+  grid-area: dateorder; }
 
 .cal__week {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
       justify-content: center; }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .cal__week {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: (1fr)[7];
+          grid-template-columns: repeat(7, 1fr);
+      grid-gap: 1em; } }
 
 .cal__week__day {
-  margin: 10px;
+  margin: 5px;
   -ms-flex: 1 1 auto;
       flex: 1 1 auto;
   width: 12%;
@@ -199,6 +264,17 @@ h4 {
   display: flex;
   -ms-flex-pack: center;
       justify-content: center; }
+  @media only screen and (min-width: 780px) {
+    .cal__week__day {
+      margin: 10px; } }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .cal__week__day {
+      justify-self: end;
+      width: 100%; }
+      @media only screen and (min-width: 780px) {
+        .cal__week__day {
+          justify-self: center;
+          width: auto; } } }
 
 .cal__week__day--text {
   font-size: 0;
@@ -218,19 +294,34 @@ h4 {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   height: auto;
-  padding: 0.5%; }
+  padding: 0.5%;
+  width: 100%; }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .cal__days__grid {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: (1fr)[7];
+          grid-template-columns: repeat(7, 1fr);
+      grid-gap: 5px; }
+      @media only screen and (min-width: 780px) {
+        .cal__days__grid {
+          grid-gap: 1em; } } }
 
 .cal__days__spacer, .cal__days__day, .cal__days__spacer--end {
-  padding: 1em;
+  padding: auto;
   margin: 10px 1% 0 0;
   display: -ms-flexbox;
   display: flex;
   -ms-flex: 1 1 auto;
       flex: 1 1 auto;
-  width: 12%;
+  width: auto;
   box-shadow: 2px 2px 5px 0 transparent;
   -ms-flex-order: 0;
       order: 0; }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    @media only screen and (min-width: 780px) {
+      .cal__days__spacer, .cal__days__day, .cal__days__spacer--end {
+        padding: 1em; } } }
 
 .cal__days__day {
   background-color: #dff8fd;
@@ -255,19 +346,23 @@ h4 {
 
 .cal__days__day--text {
   visibility: hidden;
-  height: 0; }
+  height: 0;
+  width: 0; }
   @media only screen and (min-width: 600px) {
     .cal__days__day--text {
       visibility: visible;
-      height: auto; } }
+      height: auto;
+      width: auto; } }
 
 .cal__days__day--ordinal {
   visibility: hidden;
-  height: 0; }
+  height: 0;
+  width: 0; }
   @media only screen and (min-width: 600px) {
     .cal__days__day--ordinal {
       visibility: visible;
-      height: auto; } }
+      height: auto;
+      width: auto; } }
 
 .cal__days__day--weekend {
   background-color: #fefde6;
@@ -308,6 +403,9 @@ h4 {
   border-style: solid;
   border-width: 1px;
   border-color: #c0c0c0; }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .today__container {
+      margin: 0; } }
   @media only screen and (min-width: 1060px) {
     .today__container {
       -ms-flex-direction: column;
@@ -316,7 +414,11 @@ h4 {
       -ms-flex-wrap: nowrap;
           flex-wrap: nowrap;
       -ms-flex-align: center;
-          align-items: center; } }
+          align-items: center; }
+      @supports ((display: -ms-grid) or (display: grid)) {
+        .today__container {
+          width: 100%;
+          margin: 0; } } }
 
 .clockdate__container {
   display: -ms-flexbox;
@@ -346,6 +448,12 @@ h4 {
       justify-content: space-around;
   width: 80%;
   min-height: 20%; }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .clockdate__string__container {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 4fr 1fr 4fr 1fr 4fr;
+          grid-template-columns: 4fr 1fr 4fr 1fr 4fr; } }
 
 .clockdate__digit__container {
   -ms-flex: 1 1 auto;

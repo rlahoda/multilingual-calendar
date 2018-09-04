@@ -32,7 +32,7 @@ $primary-grey: #6f6f6f;
 $light-grey: #c0c0c0;
 // Width Breakpoints
 $bp-xsmall: 600px;
-$bp-small: 780;
+$bp-small: 780px;
 $bp-med: 1060px;
 $bp-large: 1400px;
 // Height Breakpoints
@@ -69,41 +69,41 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 2px;
   &::first-letter {
     text-transform: capitalize;
   }
-  // @include respond-at($bp-med) {
-  //   font-size: 1.5em;
-  // }
+  @include respond-at($bp-med) {
+    font-size: 1.5em;
+  }
   // @include respond-at($bp-large) {
   //   font-size: 2em;
   // }
 }
 
 h3 {
-  font-size: 1em;
+  font-size: 0.8em;
   &::first-letter {
     text-transform: capitalize;
   }
-  // @include respond-at($bp-med) {
-  //   font-size: 1.25em;
-  // }
+  @include respond-at($bp-med) {
+    font-size: 1em;
+  }
   // @include respond-at($bp-large) {
   //   font-size: 1.5em;
   // }
 }
 
 h4 {
-  font-size: 0.7em;
+  font-size: 0.5em;
   font-weight: 600;
   &::first-letter {
     text-transform: capitalize;
   }
-  // @include respond-at($bp-med) {
-  //   font-size: 1em;
-  // }
+  @include respond-at($bp-med) {
+    font-size: 0.7em;
+  }
   // @include respond-at($bp-large) {
   //   font-size: 1em;
   // }
@@ -118,9 +118,20 @@ h4 {
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+
   @include respond-at($bp-med) {
     min-height: 100vh;
     flex-direction: row;
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-gap: 10px;
+    }
   }
 }
 
@@ -138,8 +149,15 @@ h4 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  @supports (display: grid) {
+    margin: 0;
+  }
   @include respond-at($bp-med) {
     width: 60%;
+    @supports (display: grid) {
+      width: 100%;
+      margin: 0;
+    }
   }
 }
 
@@ -150,7 +168,7 @@ h4 {
   align-items: center;
   background-color: #ededed;
   flex-direction: column;
-  @include respond-at($bp-xsmall) {
+  @include respond-at($bp-small) {
     flex-direction: row;
   }
 }
@@ -159,7 +177,7 @@ h4 {
   display: flex;
   justify-content: center;
   width: 100%;
-  @include respond-at($bp-xsmall) {
+  @include respond-at($bp-small) {
     width: 25%;
   }
   flex: 1 1 auto;
@@ -170,15 +188,31 @@ h4 {
 .cal__heading--larger {
   flex: 2 1 auto;
   width: 100%;
-  @include respond-at($bp-xsmall) {
+  @include respond-at($bp-small) {
     width: 50%;
   }
   justify-content: space-around;
   align-items: flex-start;
+  @supports (display: grid) {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "options options options"
+      "language weekstart dateorder"
+      "github github github";
+  }
+  @include respond-at($bp-med) {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-areas:
+        "options language weekstart dateorder github";
+
+    }
 }
 
 #languageSelectorContainer {
   padding: 0 5px;
+  grid-area: language;
 }
 
 .github-mention {
@@ -190,23 +224,59 @@ h4 {
   align-items: center;
   padding: 5px;
   width: 30%;
+  @supports (display: grid) {
+    grid-area: github;
+    width: 100%;
+  }
+
 }
 
 .cal__heading--box {
   text-align: center;
 }
+.cal__heading--options {
+  grid-area: options;
+}
+
+.cal__heading--weekstart {
+  grid-area: weekstart;
+}
+
+.cal__heading--dateOrder {
+  grid-area: dateorder;
+}
 
 .cal__week {
   display: flex;
   justify-content: center;
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 1em;
+  }
 }
 
 .cal__week__day {
-  margin: 10px;
+  margin: 5px;
   flex: 1 1 auto;
   width: 12%;
   display: flex;
   justify-content: center;
+  @include respond-at($bp-small) {
+    margin: 10px;
+  }
+  //grid
+  @supports (display: grid){
+    justify-self: end;
+    width: 100%;
+    @include respond-at($bp-small) {
+      justify-self: center;
+      width: auto;
+    }
+
+  }
+
+
 }
 
 .cal__week__day--text {
@@ -225,20 +295,42 @@ h4 {
 }
 
 .cal__days__grid {
+  //flexbox
   display: flex;
   flex-wrap: wrap;
+  //grid if supported
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 5px;
+    @include respond-at($bp-small) {
+      grid-gap: 1em;
+    }
+  }
+
   height: auto;
   padding: 0.5%;
+  width: 100%;
 }
 
 .cal__days__spacer {
-  padding: 1em;
+  padding: auto;
   margin: 10px 1% 0 0;
   display: flex;
   flex: 1 1 auto;
-  width: 12%;
+  // width: 12%;
+  width: auto;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0);
   order: 0;
+  @supports (display: grid) {
+    // display: grid;
+    // grid-template-columns: repeat(7, 1fr);
+    // grid-gap: 5px;
+    // overflow: scroll;
+    @include respond-at($bp-small) {
+      padding: 1em;
+    }
+  }
 }
 
 .cal__days__day {
@@ -264,18 +356,22 @@ h4 {
 .cal__days__day--text {
   visibility: hidden;
   height: 0;
+  width: 0;
   @include respond-at($bp-xsmall) {
     visibility: visible;
     height: auto;
+    width: auto;
   }
 }
 
 .cal__days__day--ordinal {
   visibility: hidden;
   height: 0;
+  width: 0;
   @include respond-at($bp-xsmall) {
     visibility: visible;
     height: auto;
+    width: auto;
   }
 }
 
@@ -319,11 +415,18 @@ h4 {
   //   flex-direction: row;
   //   align-items: center;
   // }
+  @supports (display: grid) {
+    margin: 0;
+  }
   @include respond-at($bp-med) {
     flex-direction: column;
     width: 10%;
     flex-wrap: nowrap;
     align-items: center;
+    @supports (display: grid) {
+      width: 100%;
+      margin: 0;
+    }
   }
 }
 
@@ -352,6 +455,11 @@ h4 {
   justify-content: space-around;
   width: 80%;
   min-height: 20%;
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: 4fr 1fr 4fr 1fr 4fr;
+    
+  }
 }
 
 .clockdate__digit__container {
